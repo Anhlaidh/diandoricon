@@ -11,7 +11,13 @@ tags:
 author: Diandoricon
 # 权重
 weight: 0 
-
+#  是否开启右侧目录
+toc: true
+menu:
+  main:
+    parent: "parent-menu-item"
+    identifier: "custom-identifier"
+    name: "Menu Name"
 draft: false
 ---
 

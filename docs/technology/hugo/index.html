@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Math typesetting using KaTeX'>
-<title>Math Typesetting</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='一级目录 二级目录 12 123 123 Start writing your Hugo here.'>
+<title>Hugo</title>
 
-<link rel='canonical' href='https://diandoricon.cloud/p/math-typesetting/'>
+<link rel='canonical' href='https://diandoricon.cloud/technology/hugo/'>
 
-<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Math Typesetting'>
-<meta property='og:description' content='Math typesetting using KaTeX'>
-<meta property='og:url' content='https://diandoricon.cloud/p/math-typesetting/'>
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Hugo'>
+<meta property='og:description' content='一级目录 二级目录 12 123 123 Start writing your Hugo here.'>
+<meta property='og:url' content='https://diandoricon.cloud/technology/hugo/'>
 <meta property='og:site_name' content='Hugo Theme Stack Starter'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:published_time' content='2023-08-24T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2023-08-24T00:00:00&#43;00:00'/>
-<meta name="twitter:title" content="Math Typesetting">
-<meta name="twitter:description" content="Math typesetting using KaTeX">
+<meta property='og:type' content='article'><meta property='article:section' content='Technology' /><meta property='article:tag' content='unkonwn' /><meta property='article:published_time' content='2023-12-18T13:05:43&#43;00:00'/><meta property='article:modified_time' content='2023-12-18T13:05:43&#43;00:00'/>
+<meta name="twitter:title" content="Hugo">
+<meta name="twitter:description" content="一级目录 二级目录 12 123 123 Start writing your Hugo here.">
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -198,7 +198,7 @@
         </li>
         
         
-        <li >
+        <li  class='current' >
             <a href='' >
                 
                 
@@ -257,8 +257,7 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#inline-math">Inline math</a></li>
-    <li><a href="#block-math">Block math</a></li>
+    <li><a href="#二级目录">二级目录</a></li>
   </ol>
 </nav>
         </div>
@@ -275,16 +274,20 @@
 
     <div class="article-details">
     
+    <header class="article-category">
+        
+            <a href="/categories/tecnology/" >
+                Tecnology
+            </a>
+        
+    </header>
+    
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/p/math-typesetting/">Math Typesetting</a>
+            <a href="/technology/hugo/">Hugo</a>
         </h2>
     
-        
-        <h3 class="article-subtitle">
-            Math typesetting using KaTeX
-        </h3>
         
     </div>
 
@@ -304,7 +307,7 @@
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Aug 24, 2023</time>
+                <time class="article-time--published">Dec 18, 2023</time>
             </div>
         
 
@@ -334,56 +337,26 @@
     <section class="article-content">
     
     
-    <p>Stack has built-in support for math typesetting using <a class="link" href="https://katex.org/"  target="_blank" rel="noopener"
-    >KaTeX</a>.</p>
-<p><strong>It&rsquo;s not enabled by default side-wide,</strong> but you can enable it for individual posts by adding <code>math: true</code> to the front matter. Or you can enable it side-wide by adding <code>math = true</code> to the <code>params.article</code> section in <code>config.toml</code>.</p>
-<h2 id="inline-math">Inline math</h2>
-<p>This is an inline mathematical expression: $\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h2 id="block-math">Block math</h2>
-<p>$$
-\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
-$$</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$$
-</span></span><span class="line"><span class="cl">    \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } } 
-</span></span><span class="line"><span class="cl">$$
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>$$
-f(x) = \int_{-\infty}^\infty\hat f(\xi),e^{2 \pi i \xi x},d\xi
-$$</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl">$$
-</span></span><span class="line"><span class="cl">    f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
-</span></span><span class="line"><span class="cl">$$
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
+    <h1 id="一级目录">一级目录</h1>
+<h2 id="二级目录">二级目录</h2>
+<ul>
+<li>12</li>
+<li>123</li>
+<li>123</li>
+</ul>
+<p>Start writing your Hugo here.</p>
+
 </section>
 
 
     <footer class="article-footer">
     
+    <section class="article-tags">
+        
+            <a href="/tags/unkonwn/">unkonwn</a>
+        
+    </section>
+
 
     
     <section class="article-copyright">
@@ -400,30 +373,6 @@ $$</p>
     </footer>
 
 
-    
-        <link 
-                rel="stylesheet" 
-                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
-            ><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
-                defer
-                >
-            </script><script 
-                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
-                defer
-                >
-            </script><script>
-    window.addEventListener("DOMContentLoaded", () => {
-        renderMathInElement(document.querySelector(`.article-content`), {
-            delimiters: [
-                { left: "$$", right: "$$", display: true },
-                { left: "$", right: "$", display: false },
-                { left: "\\(", right: "\\)", display: false },
-                { left: "\\[", right: "\\]", display: true }
-            ],
-            ignoredClasses: ["gist"]
-        });})
-</script>
     
 </article>
 
