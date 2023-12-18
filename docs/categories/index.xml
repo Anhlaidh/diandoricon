@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Categories on Hugo Theme Stack Starter</title>
-        <link>https://anhlaidh.github.io/diandoricon/categories/</link>
+        <link>https://diandoricon.cloud/categories/</link>
         <description>Recent content in Categories on Hugo Theme Stack Starter</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
-        <lastBuildDate>Thu, 07 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://anhlaidh.github.io/diandoricon/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 07 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://diandoricon.cloud/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>syntax</title>
-        <link>https://anhlaidh.github.io/diandoricon/categories/syntax/</link>
+        <link>https://diandoricon.cloud/categories/syntax/</link>
         <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://anhlaidh.github.io/diandoricon/categories/syntax/</guid>
+        <guid>https://diandoricon.cloud/categories/syntax/</guid>
         <description></description>
         </item>
         <item>
         <title>themes</title>
-        <link>https://anhlaidh.github.io/diandoricon/categories/themes/</link>
+        <link>https://diandoricon.cloud/categories/themes/</link>
         <pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://anhlaidh.github.io/diandoricon/categories/themes/</guid>
+        <guid>https://diandoricon.cloud/categories/themes/</guid>
         <description></description>
         </item>
         <item>
         <title>Example Category</title>
-        <link>https://anhlaidh.github.io/diandoricon/categories/example-category/</link>
+        <link>https://diandoricon.cloud/categories/example-category/</link>
         <pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate>
         
-        <guid>https://anhlaidh.github.io/diandoricon/categories/example-category/</guid>
+        <guid>https://diandoricon.cloud/categories/example-category/</guid>
         <description></description>
         </item>
         
