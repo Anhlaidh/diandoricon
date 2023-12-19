@@ -4,7 +4,7 @@
 #name = "Home"
 #url = "/"
 #[main.params]
-icon = "https://cdn.cnbj1.fds.api.mi-img.com/user-avatar/9eb083ad-27f9-48c0-87e2-d9c3e4f04002.jpeg?x-fds-process=image/resize,w_160,h_160,m_fixed"
+# icon = "https://cdn.cnbj1.fds.api.mi-img.com/user-avatar/9eb083ad-27f9-48c0-87e2-d9c3e4f04002.jpeg?x-fds-process=image/resize,w_160,h_160,m_fixed"
 #newtab = true
 
 [[social]]
