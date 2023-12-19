@@ -13,16 +13,13 @@ author: Diandoricon
 weight: 0 
 #  是否开启右侧目录
 toc: true
-menu:
-  main:
-    parent: "parent-menu-item"
-    identifier: "custom-identifier"
-    name: "Menu Name"
 draft: false
 ---
-# 一级目录
+
 ## 二级目录
-- 12 
+
+- 12
+
 - 123
 - 123
 - 456
