@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='一、简介 Arthas项目地址 GitHub
+1 https://github.com/alibaba/arthas 码云
+1 http://arthas.gitee.io/ 以下是Arthas官网介绍
+简介 Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。
+背景 通常，本地开发环境无法访问生产环境。如果在生产环境中遇到问题，则无法使用 IDE 远程调试。更糟糕的是，在生产环境中调试是不可接受的，因为它会暂停所有线程，导致服务暂停。
+开发人员可以尝试在测试环境或者预发环境中复现生产环境中的问题。但是，某些问题无法在不同的环境中轻松复现，甚至在重新启动后就消失了。
+如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦 JVM 重新启动，它可能无法复现，如上文所述。
+Arthas 旨在解决这些问题。开发人员可以在线解决生产问题。无需 JVM 重启，无需代码更改。 Arthas 作为观察者永远不会暂停正在运行的线程。
+Arthas（阿尔萨斯）能为你做什么？ Arthas 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。
+当你遇到以下类似问题而束手无策时，Arthas可以帮助你解决：
+这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？ 我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？ 遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？ 线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！ 是否有一个全局视角来查看系统的运行状况？ 有什么办法可以监控到 JVM 的实时运行状态？ 怎么快速定位应用的热点，生成火焰图？ 怎样直接从 JVM 内查找某个类的实例？ Arthas 支持 JDK 6&#43;，支持 Linux/Mac/Windows，采用命令行交互模式，同时提供丰富的 Tab 自动补全功能，进一步方便进行问题的定位和诊断。
+二、 安装&amp;amp;启动 使用arthas-boot（推荐） 安装 绿色软件，直接下载即可直接启动
+下载地址
+1 https://arthas.aliyun.com/arthas-boot.jar 启动 启动命令'>
+<title>Arthas</title>
+
+<link rel='canonical' href='https://diandoricon.cloud/p/arthas/'>
+
+<link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Arthas'>
+<meta property='og:description' content='一、简介 Arthas项目地址 GitHub
+1 https://github.com/alibaba/arthas 码云
+1 http://arthas.gitee.io/ 以下是Arthas官网介绍
+简介 Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。
+背景 通常，本地开发环境无法访问生产环境。如果在生产环境中遇到问题，则无法使用 IDE 远程调试。更糟糕的是，在生产环境中调试是不可接受的，因为它会暂停所有线程，导致服务暂停。
+开发人员可以尝试在测试环境或者预发环境中复现生产环境中的问题。但是，某些问题无法在不同的环境中轻松复现，甚至在重新启动后就消失了。
+如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦 JVM 重新启动，它可能无法复现，如上文所述。
+Arthas 旨在解决这些问题。开发人员可以在线解决生产问题。无需 JVM 重启，无需代码更改。 Arthas 作为观察者永远不会暂停正在运行的线程。
+Arthas（阿尔萨斯）能为你做什么？ Arthas 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。
+当你遇到以下类似问题而束手无策时，Arthas可以帮助你解决：
+这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？ 我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？ 遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？ 线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！ 是否有一个全局视角来查看系统的运行状况？ 有什么办法可以监控到 JVM 的实时运行状态？ 怎么快速定位应用的热点，生成火焰图？ 怎样直接从 JVM 内查找某个类的实例？ Arthas 支持 JDK 6&#43;，支持 Linux/Mac/Windows，采用命令行交互模式，同时提供丰富的 Tab 自动补全功能，进一步方便进行问题的定位和诊断。
+二、 安装&amp;amp;启动 使用arthas-boot（推荐） 安装 绿色软件，直接下载即可直接启动
+下载地址
+1 https://arthas.aliyun.com/arthas-boot.jar 启动 启动命令'>
+<meta property='og:url' content='https://diandoricon.cloud/p/arthas/'>
+<meta property='og:site_name' content='Hugo Theme Stack Starter'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='arthas' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2023-12-27T11:18:03&#43;00:00'/><meta property='article:modified_time' content='2023-12-27T11:18:03&#43;00:00'/>
+<meta name="twitter:title" content="Arthas">
+<meta name="twitter:description" content="一、简介 Arthas项目地址 GitHub
+1 https://github.com/alibaba/arthas 码云
+1 http://arthas.gitee.io/ 以下是Arthas官网介绍
+简介 Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。
+背景 通常，本地开发环境无法访问生产环境。如果在生产环境中遇到问题，则无法使用 IDE 远程调试。更糟糕的是，在生产环境中调试是不可接受的，因为它会暂停所有线程，导致服务暂停。
+开发人员可以尝试在测试环境或者预发环境中复现生产环境中的问题。但是，某些问题无法在不同的环境中轻松复现，甚至在重新启动后就消失了。
+如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦 JVM 重新启动，它可能无法复现，如上文所述。
+Arthas 旨在解决这些问题。开发人员可以在线解决生产问题。无需 JVM 重启，无需代码更改。 Arthas 作为观察者永远不会暂停正在运行的线程。
+Arthas（阿尔萨斯）能为你做什么？ Arthas 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。
+当你遇到以下类似问题而束手无策时，Arthas可以帮助你解决：
+这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？ 我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？ 遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？ 线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！ 是否有一个全局视角来查看系统的运行状况？ 有什么办法可以监控到 JVM 的实时运行状态？ 怎么快速定位应用的热点，生成火焰图？ 怎样直接从 JVM 内查找某个类的实例？ Arthas 支持 JDK 6&#43;，支持 Linux/Mac/Windows，采用命令行交互模式，同时提供丰富的 Tab 自动补全功能，进一步方便进行问题的定位和诊断。
+二、 安装&amp;amp;启动 使用arthas-boot（推荐） 安装 绿色软件，直接下载即可直接启动
+下载地址
+1 https://arthas.aliyun.com/arthas-boot.jar 启动 启动命令">
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="切换菜单">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/avatar_hue99ec05a92b209710183b3253823adca_2294_300x0_resize_box_3.png" width="300"
+                            height="300" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Hugo Theme Stack Starter</a></h1>
+            <h2 class="site-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='https://github.com/Anhlaidh'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://twitter.com'
+                        target="_blank"
+                        title="Twitter"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/archives/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <rect x="3" y="4" width="18" height="4" rx="2" />
+  <path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-10" />
+  <line x1="10" y1="12" x2="14" y2="12" />
+</svg>
+
+
+
+                
+                <span>Archives</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/search/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+                
+                <span>Search</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/links/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg>
+
+
+
+                
+                <span>Links</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='' >
+                
+                
+                
+                <span></span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>暗色模式</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">目录</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#一简介">一、简介</a>
+      <ol>
+        <li><a href="#arthas项目地址">Arthas项目地址</a></li>
+      </ol>
+    </li>
+  </ol>
+
+  <ol>
+    <li><a href="#背景">背景</a></li>
+    <li><a href="#arthas阿尔萨斯能为你做什么">Arthas（阿尔萨斯）能为你做什么？</a></li>
+    <li><a href="#二-安装启动">二、 安装&amp;启动</a>
+      <ol>
+        <li><a href="#使用arthas-boot推荐">使用<code>arthas-boot</code>（推荐）</a></li>
+        <li><a href="#安装">安装</a></li>
+        <li><a href="#启动">启动</a></li>
+        <li><a href="#挂载到java进程">挂载到java进程</a></li>
+      </ol>
+    </li>
+    <li><a href="#三-使用">三、 使用</a>
+      <ol>
+        <li><a href="#基础命令">基础命令</a>
+          <ol>
+            <li><a href="#1help查看arthas命令帮助信息">1.<code>help</code>：查看arthas命令帮助信息</a></li>
+            <li><a href="#2keymap输出当前的快捷键映射表">2.<code>keymap</code>：输出当前的快捷键映射表</a></li>
+            <li><a href="#3cat打印文件内容">3.<code>cat</code>：打印文件内容</a></li>
+            <li><a href="#4grep过滤内容">4.<code>grep</code>：过滤内容</a></li>
+            <li><a href="#5pwd返回当前的工作目录">5.<code>pwd</code>：返回当前的工作目录</a></li>
+            <li><a href="#6session查看当前会话的信息">6.<code>session</code>：查看当前会话的信息</a></li>
+            <li><a href="#7history打印命令历史">7.<code>history</code>：打印命令历史</a></li>
+            <li><a href="#8cls清空当前屏幕区域">8.<code>cls</code>：清空当前屏幕区域</a></li>
+            <li><a href="#9reset重置增强类">9.<code>reset</code>：重置增强类</a></li>
+            <li><a href="#10quit退出当前-arthas-客户端">10.<code>quit</code>：退出当前 Arthas 客户端</a></li>
+            <li><a href="#11stop关闭-arthas-服务端所有-arthas-客户端全部退出">11.<code>stop</code>：关闭 Arthas 服务端，所有 Arthas 客户端全部退出。</a></li>
+          </ol>
+        </li>
+        <li><a href="#核心命令">核心命令</a>
+          <ol>
+            <li><a href="#1-monitor监控方法的执行情况">1. <code>monitor</code>：监控方法的执行情况</a></li>
+            <li><a href="#2watch观察方法调用情况">2.<code>watch</code>：观察方法调用情况</a></li>
+            <li><a href="#3trace根据路径追踪并记录消耗时间">3.<code>trace</code>：根据路径追踪，并记录消耗时间</a></li>
+            <li><a href="#4stack输出当前方法被调用的调用路径">4.<code>stack</code>：输出当前方法被调用的调用路径</a></li>
+            <li><a href="#5tt记录方法执行数据的时空隧道">5.<code>tt</code>：记录方法执行数据的时空隧道</a></li>
+            <li><a href="#6dashboard当前系统的实时数据面板">6.<code>dashboard</code>：当前系统的实时数据面板</a></li>
+            <li><a href="#7ognl执行ognl表达式">7.<code>ognl</code>：执行ognl表达式</a></li>
+            <li><a href="#8sc查看-jvm-已加载的类信息">8.<code>sc</code>：查看 JVM 已加载的类信息</a></li>
+            <li><a href="#9sm查看已加载类的方法信息">9.<code>sm</code>：查看已加载类的方法信息</a></li>
+            <li><a href="#10vmtool查看内存中的实例强制gc">10.<code>vmtool</code>：查看内存中的实例/强制GC</a></li>
+          </ol>
+        </li>
+        <li><a href="#示例场景">示例场景</a>
+          <ol>
+            <li><a href="#场景一手动触发bean的方法">场景一：手动触发bean的方法</a></li>
+            <li><a href="#场景二修改private属性">场景二：修改private属性</a></li>
+            <li><a href="#场景三不重启服务刷新csf客户端缓存">场景三：不重启服务刷新csf客户端缓存</a></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/tecnology/" >
+                Tecnology
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/p/arthas/">Arthas</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 27, 2023</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    阅读时长: 6 分钟
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h2 id="一简介">一、简介</h2>
+<h3 id="arthas项目地址">Arthas项目地址</h3>
+<p><a class="link" href="https://github.com/alibaba/arthas"  target="_blank" rel="noopener"
+    >GitHub</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://github.com/alibaba/arthas
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><a class="link" href="http://arthas.gitee.io/"  target="_blank" rel="noopener"
+    >码云</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">http://arthas.gitee.io/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><em>以下是Arthas官网介绍</em></p>
+<blockquote>
+<h1 id="简介">简介</h1>
+<p><img src="https://arthas.gitee.io/images/arthas.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="img"
+	
+	
+></p>
+<p>Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。</p>
+<h2 id="背景">背景</h2>
+<p>通常，本地开发环境无法访问生产环境。如果在生产环境中遇到问题，则无法使用 IDE 远程调试。更糟糕的是，在生产环境中调试是不可接受的，因为它会暂停所有线程，导致服务暂停。</p>
+<p>开发人员可以尝试在测试环境或者预发环境中复现生产环境中的问题。但是，某些问题无法在不同的环境中轻松复现，甚至在重新启动后就消失了。</p>
+<p>如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦 JVM 重新启动，它可能无法复现，如上文所述。</p>
+<p>Arthas 旨在解决这些问题。开发人员可以在线解决生产问题。无需 JVM 重启，无需代码更改。 Arthas 作为观察者永远不会暂停正在运行的线程。</p>
+<h2 id="arthas阿尔萨斯能为你做什么">Arthas（阿尔萨斯）能为你做什么？</h2>
+<p><code>Arthas</code> 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。</p>
+<p>当你遇到以下类似问题而束手无策时，<code>Arthas</code>可以帮助你解决：</p>
+<ol>
+<li>这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？</li>
+<li>我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？</li>
+<li>遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？</li>
+<li>线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！</li>
+<li>是否有一个全局视角来查看系统的运行状况？</li>
+<li>有什么办法可以监控到 JVM 的实时运行状态？</li>
+<li>怎么快速定位应用的热点，生成火焰图？</li>
+<li>怎样直接从 JVM 内查找某个类的实例？</li>
+</ol>
+<p><code>Arthas</code> 支持 JDK 6+，支持 Linux/Mac/Windows，采用命令行交互模式，同时提供丰富的 <code>Tab</code> 自动补全功能，进一步方便进行问题的定位和诊断。</p>
+</blockquote>
+<h2 id="二-安装启动">二、 安装&amp;启动</h2>
+<h3 id="使用arthas-boot推荐">使用<code>arthas-boot</code>（推荐）</h3>
+<ol>
+<li>
+<h3 id="安装">安装</h3>
+<p>绿色软件，直接下载即可直接启动</p>
+<p><a class="link" href="https://arthas.aliyun.com/arthas-boot.jar"  target="_blank" rel="noopener"
+    >下载地址</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">https://arthas.aliyun.com/arthas-boot.jar
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<h3 id="启动">启动</h3>
+<p>启动命令</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">java -jar arthas-boot.jar
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>若使用过程中遇到中文乱码，可在启动命令指定编码格式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">java -jar -Dfile.encoding<span class="o">=</span>UTF-8 arthas-boot.jar
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">java -jar -Dfile.encoding<span class="o">=</span>gbk arthas-boot.jar
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<h3 id="挂载到java进程">挂载到java进程</h3>
+<p>arthas启动后，选择需要挂载的java进程序号</p>
+</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@xxx ~<span class="o">]</span>java -jar .<span class="se">\a</span>rthas-boot.jar
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> JAVA_HOME: /opt/Java/jdk-11
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> arthas-boot version: 3.6.9
+</span></span><span class="line"><span class="cl"><span class="o">[</span>INFO<span class="o">]</span> Found existing java process, please choose one and input the serial number of the process, eg : 1. Then hit ENTER.
+</span></span><span class="line"><span class="cl">* <span class="o">[</span>1<span class="o">]</span>: <span class="m">26868</span> com.ai.UnidocWebStartup
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>2<span class="o">]</span>: <span class="m">15232</span> org.jetbrains.idea.maven.server.RemoteMavenServer36
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>3<span class="o">]</span>: <span class="m">20000</span> org.jetbrains.idea.maven.server.RemoteMavenServer36
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>4<span class="o">]</span>: <span class="m">3984</span> org.apache.zookeeper.server.quorum.QuorumPeerMain
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>5<span class="o">]</span>: <span class="m">9936</span>
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>6<span class="o">]</span>: <span class="m">10468</span> org.jetbrains.jps.cmdline.Launcher
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>7<span class="o">]</span>: <span class="m">23480</span> org.jetbrains.idea.maven.server.RemoteMavenServer36
+</span></span><span class="line"><span class="cl">  <span class="o">[</span>8<span class="o">]</span>: <span class="m">11324</span> com.cmcc.unidoc.UnidocServerStartup
+</span></span><span class="line"><span class="cl">  
+</span></span><span class="line"><span class="cl"> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    ,---.  ,------. ,--------.,--.  ,--.  ,---.   ,---.
+</span></span><span class="line"><span class="cl"> /  O  <span class="se">\ </span><span class="p">|</span>  .--. <span class="s1">&#39;&#39;</span>--.  .--<span class="s1">&#39;|  &#39;</span>--<span class="s1">&#39;  | /  O  \ &#39;</span>   .-<span class="s1">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">|  .-.  ||  &#39;</span>--<span class="s1">&#39;.&#39;</span>   <span class="p">|</span>  <span class="p">|</span>   <span class="p">|</span>  .--.  <span class="o">||</span>  .-.  <span class="p">|</span><span class="sb">`</span>.  <span class="sb">`</span>-.
+</span></span><span class="line"><span class="cl"><span class="p">|</span>  <span class="p">|</span> <span class="p">|</span>  <span class="o">||</span>  <span class="p">|</span><span class="se">\ </span> <span class="se">\ </span>   <span class="p">|</span>  <span class="p">|</span>   <span class="p">|</span>  <span class="p">|</span>  <span class="p">|</span>  <span class="o">||</span>  <span class="p">|</span> <span class="p">|</span>  <span class="p">|</span>.-<span class="s1">&#39;    |
+</span></span></span><span class="line"><span class="cl"><span class="s1">`--&#39;</span> <span class="sb">`</span>--<span class="s1">&#39;`--&#39;</span> <span class="s1">&#39;--&#39;</span>   <span class="sb">`</span>--<span class="s1">&#39;   `--&#39;</span>  <span class="sb">`</span>--<span class="s1">&#39;`--&#39;</span> <span class="sb">`</span>--<span class="s1">&#39;`-----&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">wiki       https://arthas.aliyun.com/doc
+</span></span><span class="line"><span class="cl">tutorials  https://arthas.aliyun.com/doc/arthas-tutorials.html
+</span></span><span class="line"><span class="cl">version    3.6.9
+</span></span><span class="line"><span class="cl">main_class
+</span></span><span class="line"><span class="cl">pid        <span class="m">26868</span>
+</span></span><span class="line"><span class="cl"><span class="nb">time</span>       2023-11-17 16:12:03
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>arthas@26868<span class="o">]</span>$
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="三-使用">三、 使用</h2>
+<h3 id="基础命令">基础命令</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>help</code></td>
+<td>查看arthas命令帮助信息，可在其他命令后加-h参数查看该命令的参数信息</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>keymap</code></td>
+<td><code>keymap</code>命令输出当前的快捷键映射表</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>cat</code></td>
+<td>显示文本文件内容</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>grep</code></td>
+<td>过滤内容，和 linux 命令类似</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>pwd</code></td>
+<td>返回当前的工作目录，和 linux 命令类似</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>session</code></td>
+<td>查看当前会话的信息，显示当前绑定的 pid 以及会话 id</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>history</code></td>
+<td>打印命令历史</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>cls</code></td>
+<td>清空当前屏幕区域</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>reset</code></td>
+<td>重置增强类，将被 Arthas 增强过的类全部还原，Arthas 服务端<code>stop</code>时会重置所有增强过的类</td>
+</tr>
+<tr>
+<td>10</td>
+<td><code>quit</code></td>
+<td>退出当前 Arthas 客户端，其他 Arthas 客户端不受影响。等同于<strong>exit</strong>、<strong>logout</strong>、<strong>q</strong>三个指令</td>
+</tr>
+<tr>
+<td>11</td>
+<td><code>stop</code></td>
+<td>提示关闭 Arthas 服务端，所有 Arthas 客户端全部退出</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="1help查看arthas命令帮助信息">1.<code>help</code>：查看arthas命令帮助信息</h4>
+<p>查看arthas命令帮助信息，可在其他命令后加-h参数查看该命令的参数信息</p>
+<h4 id="2keymap输出当前的快捷键映射表">2.<code>keymap</code>：输出当前的快捷键映射表</h4>
+<p>输出当前的快捷键映射表</p>
+<h4 id="3cat打印文件内容">3.<code>cat</code>：打印文件内容</h4>
+<p>打印文件内容，和 linux 里的 cat 命令类似。</p>
+<h4 id="4grep过滤内容">4.<code>grep</code>：过滤内容</h4>
+<p>过滤内容，类似传统的<code>grep</code>命令。</p>
+<h4 id="5pwd返回当前的工作目录">5.<code>pwd</code>：返回当前的工作目录</h4>
+<p>返回当前的工作目录，和 linux 命令类似</p>
+<h4 id="6session查看当前会话的信息">6.<code>session</code>：查看当前会话的信息</h4>
+<p>查看当前会话的信息，显示当前绑定的 pid 以及会话 id。</p>
+<h4 id="7history打印命令历史">7.<code>history</code>：打印命令历史</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#查看最近执行的3条指令</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">history</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">  <span class="m">269</span>  thread
+</span></span><span class="line"><span class="cl">  <span class="m">270</span>  cls
+</span></span><span class="line"><span class="cl">  <span class="m">271</span>  <span class="nb">history</span> <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="8cls清空当前屏幕区域">8.<code>cls</code>：清空当前屏幕区域</h4>
+<p>清空当前屏幕区域</p>
+<h4 id="9reset重置增强类">9.<code>reset</code>：重置增强类</h4>
+<p>将被 Arthas 增强过的类全部还原，Arthas 服务端<code>stop</code>时会重置所有增强过的类</p>
+<h4 id="10quit退出当前-arthas-客户端">10.<code>quit</code>：退出当前 Arthas 客户端</h4>
+<p>退出当前 Arthas 客户端，其他 Arthas 客户端不受影响。等同于<strong>exit</strong>、<strong>logout</strong>、<strong>q</strong>三个指令。</p>
+<p>只是退出当前 Arthas 客户端，Arthas 的服务器端并没有关闭，所做的修改也不会被重置。</p>
+<h4 id="11stop关闭-arthas-服务端所有-arthas-客户端全部退出">11.<code>stop</code>：关闭 Arthas 服务端，所有 Arthas 客户端全部退出。</h4>
+<p>关闭 Arthas 服务器之前，会重置掉所有做过的增强类。但是用 redefine 重加载的类内容不会被重置。</p>
+<hr>
+<h3 id="核心命令">核心命令</h3>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><code>monitor</code></td>
+<td>监控方法的执行情况</td>
+</tr>
+<tr>
+<td>2</td>
+<td><code>watch</code></td>
+<td>观察方法调用情况</td>
+</tr>
+<tr>
+<td>3</td>
+<td><code>trace</code></td>
+<td>根据路径追踪，并记录消耗时间</td>
+</tr>
+<tr>
+<td>4</td>
+<td><code>stack</code></td>
+<td>追踪方法被调用的调用路径</td>
+</tr>
+<tr>
+<td>5</td>
+<td><code>tt</code></td>
+<td>记录方法执行数据的时空隧道</td>
+</tr>
+<tr>
+<td>6</td>
+<td><code>dashboard</code></td>
+<td>当前系统的实时数据面板</td>
+</tr>
+<tr>
+<td>7</td>
+<td><code>ognl</code></td>
+<td>执行ognl表达式</td>
+</tr>
+<tr>
+<td>8</td>
+<td><code>sc</code></td>
+<td>查看 JVM 已加载的类信息</td>
+</tr>
+<tr>
+<td>9</td>
+<td><code>sm</code></td>
+<td>查看 JVM 已加载类的方法信息</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="1-monitor监控方法的执行情况">1. <code>monitor</code>：监控方法的执行情况</h4>
+<h5 id="字段说明">字段说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:left">监控项</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">timestamp</td>
+<td style="text-align:left">时间戳</td>
+</tr>
+<tr>
+<td style="text-align:left">class</td>
+<td style="text-align:left">Java 类</td>
+</tr>
+<tr>
+<td style="text-align:left">method</td>
+<td style="text-align:left">方法（构造方法、普通方法）</td>
+</tr>
+<tr>
+<td style="text-align:left">total</td>
+<td style="text-align:left">调用次数</td>
+</tr>
+<tr>
+<td style="text-align:left">success</td>
+<td style="text-align:left">成功次数</td>
+</tr>
+<tr>
+<td style="text-align:left">fail</td>
+<td style="text-align:left">失败次数</td>
+</tr>
+<tr>
+<td style="text-align:left">rt</td>
+<td style="text-align:left">平均 RT</td>
+</tr>
+<tr>
+<td style="text-align:left">fail-rate</td>
+<td style="text-align:left">失败率</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="参数说明">参数说明</h5>
+<p>方法拥有一个命名参数 <code>[c:]</code>，意思是统计周期（cycle of output），拥有一个整型的参数值</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名称</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>class-pattern</em></td>
+<td>类名表达式匹配</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>method-pattern</em></td>
+<td>方法名表达式匹配</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>condition-express</em></td>
+<td>条件表达式</td>
+</tr>
+<tr>
+<td style="text-align:left">[E]</td>
+<td>开启正则表达式匹配，默认为通配符匹配</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[c:]</code></td>
+<td>统计周期，默认值为 120 秒</td>
+</tr>
+<tr>
+<td style="text-align:left">[b]</td>
+<td>在<strong>方法调用之前</strong>计算 condition-express</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[m &lt;arg&gt;]</code></td>
+<td>指定 Class 最大匹配数量，默认值为 50。长格式为<code>[maxMatch &lt;arg&gt;]</code>。</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="使用参考">使用参考</h5>
+<p>监控<code>com.ai.controller.TesttController</code>类的<code>arthasTest</code>方法，并且每5S更新一次状态。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ monitor com.ai.controller.TesttController arthasTest -c <span class="m">5</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过接口调用arthasTest方法后，监控到调用情况：</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/07/image-20231207174601845.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231207174601845"
+	
+	
+></p>
+<h4 id="2watch观察方法调用情况">2.<code>watch</code>：观察方法调用情况</h4>
+<blockquote>
+<p>让你能方便的观察到指定函数的调用情况。</p>
+<p>能观察到的范围为：<code>返回值</code>、<code>抛出异常</code>、<code>入参</code>，通过编写 OGNL 表达式进行对应变量的查看。</p>
+</blockquote>
+<h5 id="参数说明-1">参数说明</h5>
+<p>watch 的参数比较多，主要是因为它能在 4 个不同的场景观察对象</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名称</th>
+<th style="text-align:left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>class-pattern</em></td>
+<td style="text-align:left">类名表达式匹配</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>method-pattern</em></td>
+<td style="text-align:left">函数名表达式匹配</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>express</em></td>
+<td style="text-align:left">观察表达式，默认值：<code>{params, target, returnObj}</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><em>condition-express</em></td>
+<td style="text-align:left">条件表达式</td>
+</tr>
+<tr>
+<td style="text-align:left">[b]</td>
+<td style="text-align:left">在<strong>函数调用之前</strong>观察</td>
+</tr>
+<tr>
+<td style="text-align:left">[e]</td>
+<td style="text-align:left">在<strong>函数异常之后</strong>观察</td>
+</tr>
+<tr>
+<td style="text-align:left">[s]</td>
+<td style="text-align:left">在<strong>函数返回之后</strong>观察</td>
+</tr>
+<tr>
+<td style="text-align:left">[f]</td>
+<td style="text-align:left">在<strong>函数结束之后</strong>(正常返回和异常返回)观察</td>
+</tr>
+<tr>
+<td style="text-align:left">[E]</td>
+<td style="text-align:left">开启正则表达式匹配，默认为通配符匹配</td>
+</tr>
+<tr>
+<td style="text-align:left">[x:]</td>
+<td style="text-align:left">指定输出结果的属性遍历深度，默认为 1，最大值是 4</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[m &lt;arg&gt;]</code></td>
+<td style="text-align:left">指定 Class 最大匹配数量，默认值为 50。长格式为<code>[maxMatch &lt;arg&gt;]</code>。</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>提示</p>
+<p>观察表达式，默认值是<code>{params, target, returnObj}</code></p>
+</blockquote>
+<h5 id="使用参考-1">使用参考</h5>
+<p>观察<code>com.ai.controller.TesttController</code>类的<code>arthasTest</code>方法的入参和返回值，结果向下解析三层</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ watch com.ai.controller.TesttController arthasTest <span class="s2">&#34;{params, returnObj}&#34;</span> -x <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用该方法的入参&amp;返回值</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/07/image-20231207181317519.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231207181317519"
+	
+	
+></p>
+<p>观察到方法执行的结果：</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/07/image-20231207181300533.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231207181300533"
+	
+	
+></p>
+<h4 id="3trace根据路径追踪并记录消耗时间">3.<code>trace</code>：根据路径追踪，并记录消耗时间</h4>
+<blockquote>
+<p>对方法内部调用路径进行追踪，并输出方法路径上的每个节点上耗时。</p>
+</blockquote>
+<h5 id="参数说明-2"><strong>参数说明</strong></h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>class-pattern</em></td>
+<td>类名表达匹配</td>
+</tr>
+<tr>
+<td><em>method-pattern</em></td>
+<td>方法名表达式匹配</td>
+</tr>
+<tr>
+<td><em>condition-express</em></td>
+<td>条件表达式，使用OGNL表达式</td>
+</tr>
+<tr>
+<td>[E]</td>
+<td>开启正则表达式匹配，默认是通配符匹配</td>
+</tr>
+<tr>
+<td><code>[n:]</code></td>
+<td>设置命令执行次数</td>
+</tr>
+<tr>
+<td><code>#cost</code></td>
+<td>方法执行耗时，单位是毫秒</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="使用参考-2">使用参考</h5>
+<p>增加一个方法<code>timeConsumingMethod</code>，该方法模拟耗时操作，并在<code>com.ai.controller.TesttController</code>类的<code>arthasTest</code>方法中调用该方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">timeConsumingMethod</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">1000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>追踪<code>arthasTest</code>方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ trace com.ai.controller.TesttController arthasTest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用<code>arthasTest</code>方法，查看trace输出结果：</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/12/image-20231212182512995.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231212182512995"
+	
+	
+></p>
+<p>可以看到方法的内部调用路径以及耗时都清晰的展示出来</p>
+<blockquote>
+<p>提示：<code>java.*</code> 下的函数调用默认会忽略掉。通过增加<code>--skipJDKMethod false</code>参数可以打印出来。</p>
+</blockquote>
+<h4 id="4stack输出当前方法被调用的调用路径">4.<code>stack</code>：输出当前方法被调用的调用路径</h4>
+<blockquote>
+<p>输出当前方法被调用的调用路径
+很多时候我们都知道一个方法被执行，但这个方法被执行的路径非常多，或者你根本就不知道这个方法是从那里被执行了，此时你需要的是 stack 命令。</p>
+</blockquote>
+<h5 id="参数说明-3">参数说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>class-pattern</em></td>
+<td>类名表达式匹配</td>
+</tr>
+<tr>
+<td><em>method-pattern</em></td>
+<td>方法名表达式匹配</td>
+</tr>
+<tr>
+<td><em>condition-express</em></td>
+<td>条件表达式，OGNL</td>
+</tr>
+<tr>
+<td>[E]</td>
+<td>开启正则表达式匹配，默认为通配符匹配</td>
+</tr>
+<tr>
+<td><code>[n:]</code></td>
+<td>执行次数限制</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="使用参考-3">使用参考</h5>
+<p>观察<code>com.ai.controller.TesttController</code>类的<code>timeConsumingMethod</code>调用路径</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ stack com.ai.controller.TesttController timeConsumingMethod
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/14/image-20231214152854689.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231214152854689"
+	
+	
+></p>
+<p>可以看到该方法的调用栈被打印出来</p>
+<h4 id="5tt记录方法执行数据的时空隧道">5.<code>tt</code>：记录方法执行数据的时空隧道</h4>
+<blockquote>
+<p>time-tunnel 方法执行数据的时空隧道，</p>
+<p>记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</p>
+<p>watch 虽然很方便和灵活，但需要提前想清楚观察表达式的拼写，这对排查问题而言要求太高，因为很多时候我们并不清楚问题出自于何方，只能靠蛛丝马迹进行猜测。这个时候如果能记录下当时方法调用的所有入参和返回值、抛出的异常会对整个问题的思考与判断非常有帮助。于是乎，TimeTunnel 命令就诞生了。</p>
+<p>作用：记录指定方法每次调用的入参和返回值，并后期还可以对这些信息进行观测</p>
+</blockquote>
+<h5 id="字段说明-1">字段说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>表格字段</th>
+<th>字段解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INDEX</td>
+<td>时间片段记录编号，每一个编号代表着一次调用，后续 tt 还有很多命令都是基于此编号指定记录操作，非常重要。</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>方法执行的本机时间，记录了这个时间片段所发生的本机时间</td>
+</tr>
+<tr>
+<td>COST(ms)</td>
+<td>方法执行的耗时</td>
+</tr>
+<tr>
+<td>IS-RET</td>
+<td>方法是否以正常返回的形式结束</td>
+</tr>
+<tr>
+<td>IS-EXP</td>
+<td>方法是否以抛异常的形式结束</td>
+</tr>
+<tr>
+<td>OBJECT</td>
+<td>执行对象的<code>hashCode()</code>，注意，曾经有人误认为是对象在 JVM 中的内存地址，但很遗憾他不是。但他能帮助你简单的标记当前执行方法的类实体</td>
+</tr>
+<tr>
+<td>CLASS</td>
+<td>执行的类名</td>
+</tr>
+<tr>
+<td>METHOD</td>
+<td>执行的方法名</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="参数说明-4">参数说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>tt的参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-t</td>
+<td>记录某个方法在一个时间段中的调用</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>显示所有已经记录的列表</td>
+</tr>
+<tr>
+<td>-n 次数</td>
+<td>只记录多少次</td>
+</tr>
+<tr>
+<td>-s 表达式</td>
+<td>搜索表达式</td>
+</tr>
+<tr>
+<td>-i 索引号</td>
+<td>查看指定索引号的详细调用信息</td>
+</tr>
+<tr>
+<td>-p</td>
+<td>重新调用：指定的索引号时间碎片</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="使用参考-4">使用参考</h5>
+<p>记录某个方法的调用时空隧道</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -t com.ai.controller.TesttController arthasTest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/14/image-20231214165348778.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231214165348778"
+	
+	
+></p>
+<p>查看index为1000的调用详情</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225113523019.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225113523019"
+	
+	
+></p>
+<p>复现index为1000的调用，使用当时的入参再次调用方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span> -p
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225113714705.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225113714705"
+	
+	
+></p>
+<h4 id="6dashboard当前系统的实时数据面板">6.<code>dashboard</code>：当前系统的实时数据面板</h4>
+<p>输入 <code>q</code> 或者 <code>Ctrl+C</code> 可以退出dashboard命令</p>
+<h5 id="字段说明-2">字段说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>表格字段</th>
+<th>字段解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ID</td>
+<td>Java 级别的线程 ID，注意这个 ID 不能跟 jstack 中的 nativeID 一一对应。</td>
+</tr>
+<tr>
+<td>NAME</td>
+<td>线程名</td>
+</tr>
+<tr>
+<td>GROUP</td>
+<td>线程组名</td>
+</tr>
+<tr>
+<td>PRIORITY</td>
+<td>线程优先级, 1~10 之间的数字，越大表示优先级越高</td>
+</tr>
+<tr>
+<td>STATE</td>
+<td>线程的状态</td>
+</tr>
+<tr>
+<td>CPU%</td>
+<td>线程的 cpu 使用率。比如采样间隔 1000ms，某个线程的增量 cpu 时间为 100ms，则 cpu 使用率=100/1000=10%</td>
+</tr>
+<tr>
+<td>DELTA_TIME</td>
+<td>上次采样之后线程运行增量 CPU 时间，数据格式为<code>秒</code></td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>线程运行总 CPU 时间，数据格式为<code>分:秒</code></td>
+</tr>
+<tr>
+<td>INTERRUPTED</td>
+<td>线程当前的中断位状态</td>
+</tr>
+<tr>
+<td>DAEMON</td>
+<td>是否是 daemon 线程</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="参数说明-5">参数说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名称</th>
+<th style="text-align:left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">[i:]</td>
+<td style="text-align:left">刷新实时数据的时间间隔 (ms)，默认 5000ms</td>
+</tr>
+<tr>
+<td style="text-align:left">[n:]</td>
+<td style="text-align:left">刷新实时数据的次数</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="使用参考-5">使用参考</h5>
+<p>查看实时数据面板，每10秒刷新一次，刷新3次后退出面板</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dashboard -i <span class="m">10000</span> -n <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225150258683.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225150258683"
+	
+	
+></p>
+<h4 id="7ognl执行ognl表达式">7.<code>ognl</code>：执行ognl表达式</h4>
+<h5 id="参数说明-6">参数说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名称</th>
+<th style="text-align:left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>express</em></td>
+<td style="text-align:left">执行的表达式</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[c:]</code></td>
+<td style="text-align:left">执行表达式的 ClassLoader 的 hashcode，默认值是 SystemClassLoader</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[classLoaderClass:]</code></td>
+<td style="text-align:left">指定执行表达式的 ClassLoader 的 class name</td>
+</tr>
+<tr>
+<td style="text-align:left">[x]</td>
+<td style="text-align:left">结果对象的展开层次，默认值 1</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="使用参考-6">使用参考</h5>
+<ul>
+<li>
+<p>调用静态方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@java.lang.System@out.println(&#34;hello&#34;)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225153829398.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225153829398"
+	
+	
+></p>
+</li>
+<li>
+<p>查看静态属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@com.ai.controller.TesttController@IP_UNKNOWN&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225165011696.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225165011696"
+	
+	
+></p>
+</li>
+<li>
+<p>获取某类的Logger，并使用该Logger打印日志</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#logger=@com.ai.controller.TesttController@logger,#logger.info(&#34;hello world!!&#34;)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225162947492.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225162947492"
+	
+	
+></p>
+</li>
+<li>
+<p>利用hutool的spring工具类获取spring bean, 构建一个map作为入参并调用bean的方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#req=#{&#34;a&#34;:&#34;value&#34;,&#34;b&#34;:&#34;value&#34;}, #bean=@cn.hutool.extra.spring.SpringUtil@getBean(&#34;testtController&#34;), #bean.arthasTest(#req)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h5 id="ognl表达式常用语法">ognl表达式常用语法</h5>
+<ul>
+<li>
+<p>调用静态方法</p>
+<p>@全路径类目@静态方法名(&ldquo;参数&rdquo;)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">z$ ognl <span class="s1">&#39;@java.lang.System@out.println(&#34;hello&#34;)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>调用静态属性</p>
+<p>@全路径类目@静态属性名</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@cn.rapdog.OgnlTest@MAIL_TEMPLATE&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>赋值临时变量</p>
+<p>#临时变量名=ognl表达式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#a=@cn.rapdog.OgnlTest@MAIL_TEMPLATE&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>将方法A的返回作为方法B的入参</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#a=@cn.rapdog.OgnlTest@methodA(), @cn.rapdog.OgnlTest@methodB(#a)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>执行多行表达式，赋值给临时变量，返回一个List</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#value1=@cn.rapdog.OgnlTest@methodA(), #value2=@cn.rapdog.OgnlTest@methodB(#value1), {#value1,#value2}&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>方法入参是简单类型的列表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@cn.rapdog.OgnlTest@printList({&#34;a&#34;,&#34;b&#34;})&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>方法入参是一个对象</p>
+<p>先创建一个对象，再将这个对象作为方法入参传入方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#obj=new cn.rapdog.User(&#34;rapdog&#34;,18,true), @cn.rapdog.OgnlTest@printObject(#obj)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果只能使用对象的无参构造方法，可以调用对象的set方法设置属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#obj=new cn.rapdog.User(), #obj.setName(&#34;rapdog&#34;), #obj.setAge(18), #obj.setGender(true), @cn.rapdog.OgnlTest@printObject(#obj)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>方法入参是一个map</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#inputmap=#{&#34;key1&#34;:&#34;value1&#34;,&#34;key2&#34;:&#34;value2&#34;}, @cn.rapdog.OgnlTest@printObject(#inputmap)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>访问对象的属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#user=new cn.rapdog.User(&#34;rapdog&#34;,18,true), #user.name&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>或调用对象的get方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#user=new cn.rapdog.User(&#34;rapdog&#34;,18,true), #user.getAge()&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>通过下标访问数组的元素</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;{&#34;a&#34;,&#34;b&#34;}[0]&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>通过key访问Map的value</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#{&#34;key1&#34;:&#34;value1&#34;,&#34;key2&#34;:&#34;value2&#34;}[&#34;key1&#34;]&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h4 id="8sc查看-jvm-已加载的类信息">8.<code>sc</code>：查看 JVM 已加载的类信息</h4>
+<blockquote>
+<p>“Search-Class” 的简写，这个命令能搜索出所有已经加载到 JVM 中的 Class 信息，这个命令支持的参数有 <code>[d]</code>、<code>[E]</code>、<code>[f]</code> 和 <code>[x:]</code>。</p>
+<p>sc 默认开启了子类匹配功能，也就是说所有当前类的子类也会被搜索出来，想要精确的匹配，请打开<code>options disable-sub-class true</code>开关</p>
+</blockquote>
+<h5 id="参数说明-7">参数说明</h5>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th style="text-align:left">参数名称</th>
+<th style="text-align:left">参数说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>class-pattern</em></td>
+<td style="text-align:left">类名表达式匹配</td>
+</tr>
+<tr>
+<td style="text-align:left"><em>method-pattern</em></td>
+<td style="text-align:left">方法名表达式匹配</td>
+</tr>
+<tr>
+<td style="text-align:left">[d]</td>
+<td style="text-align:left">输出当前类的详细信息，包括这个类所加载的原始文件来源、类的声明、加载的 ClassLoader 等详细信息。 如果一个类被多个 ClassLoader 所加载，则会出现多次</td>
+</tr>
+<tr>
+<td style="text-align:left">[E]</td>
+<td style="text-align:left">开启正则表达式匹配，默认为通配符匹配</td>
+</tr>
+<tr>
+<td style="text-align:left">[f]</td>
+<td style="text-align:left">输出当前类的成员变量信息（需要配合参数-d 一起使用）</td>
+</tr>
+<tr>
+<td style="text-align:left">[x:]</td>
+<td style="text-align:left">指定输出静态变量时属性的遍历深度，默认为 0，即直接使用 <code>toString</code> 输出</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[c:]</code></td>
+<td style="text-align:left">指定 class 的 ClassLoader 的 hashcode</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[classLoaderClass:]</code></td>
+<td style="text-align:left">指定执行表达式的 ClassLoader 的 class name</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>[n:]</code></td>
+<td style="text-align:left">具有详细信息的匹配类的最大数量（默认为 100）</td>
+</tr>
+</tbody>
+</table></div>
+<h5 id="使用参考-7">使用参考</h5>
+<p>查看某类的详细信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d cn.rapdog.OgnlTest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225183736692.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225183736692"
+	
+	
+></p>
+<p>查看某类的详细信息&amp;成员变量信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d -f cn.rapdog.OgnlTest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225183830888.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231225183830888"
+	
+	
+></p>
+<h4 id="9sm查看已加载类的方法信息">9.<code>sm</code>：查看已加载类的方法信息</h4>
+<p>查看方法列表</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sm cn.rapdog.OgnlTest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226110513326.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231226110513326"
+	
+	
+></p>
+<p>查看方法详细信息</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ -d sm cn.rapdog.OgnlTest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="10vmtool查看内存中的实例强制gc">10.<code>vmtool</code>：查看内存中的实例/强制GC</h4>
+<ul>
+<li>
+<p>获取内存中的对象</p>
+<blockquote>
+<p>提示：
+通过 <code>--limit</code>参数，可以限制返回值数量，避免获取超大数据时对 JVM 造成压力。默认值是 10。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances --className java.lang.String --limit <span class="m">10</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226112546961.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231226112546961"
+	
+	
+></p>
+</li>
+<li>
+<p>指定classloader获取对象</p>
+<p>利用<code>sc</code>命令获取类的classloader hash</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d org.spriogframework.context.ApplicationContext
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226155439769.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231226155439769"
+	
+	
+></p>
+<p>再指定classloader</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className org.springframework.context.ApplicationContext
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>执行表达式</p>
+<blockquote>
+<p>提示</p>
+<p><code>getInstances</code> action 返回结果绑定到<code>instances</code>变量上，它是数组。可以通过<code>--express</code>参数执行指定的表达式。</p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className org.springframework.context.ApplicationContext --express <span class="s1">&#39;instances[0].getBeanDefinitionNames()&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>强制GC</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action forceGc
+</span></span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<hr>
+<h3 id="示例场景">示例场景</h3>
+<h4 id="场景一手动触发bean的方法">场景一：手动触发bean的方法</h4>
+<p>某工程的定时任务无法正常触发，需要手动触发某bean中的方法</p>
+<p>寻找spring ApplicationContext的classloader hash</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ sc -d org.springframework.context.ApplicationContext
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>获取目标bean</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className org.springframework.context.ApplicationContext --express <span class="s1">&#39;instances[0].getBean(&#34;ibmExcelService&#34;)&#39;</span> -x <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用目标bean的方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className org.springframework.context.ApplicationContext --express <span class="s1">&#39;instances[0].getBean(&#34;ibmExcelService&#34;).staffExcel(&#34;SYNCID#20231212&#34;)&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="场景二修改private属性">场景二：修改private属性</h4>
+<p>某接口使用了SYSCODE字段，该字段使用@Value注解绑定spring-boot配置中的值，需要修改该字段</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TesttController</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Value</span><span class="p">(</span><span class="s">&#34;${log4x.audit.opLog.sysCode}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SYSCODE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&#34;/arthasTest&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">arthasTest</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">SYSCODE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>使用<code>tt</code>命令开始记录该接口的调用记录，随后调用接口，找到本次调用的index</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ tt -t com.ai.controller.TesttController arthasTest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>调用接口，查看tt命令记录的调用记录，发现调用的index为1000</p>
+<p>读取类中属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span> -w <span class="s1">&#39;target.SYSCODE&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>修改该属性</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span> -w <span class="s1">&#39;target.SYSCODE=&#34;JCNL&#34;&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>报错：&ldquo;Error during processing the command: java.lang.IllegalAccessError, message:By default, strict mode is true, not allowed to set object properties. Want to set object properties, execute <code>options strict false</code>, please check $HOME/logs/arthas/arthas.log for more details.&rdquo;</p>
+<p>Arthas默认设置不允许修改字段，需要通过运行<code>options strict false</code>命令来修改这一配置</p>
+</blockquote>
+<p>再次调用接口，发现返回已经变为了刚才修改的JCNL</p>
+<h4 id="场景三不重启服务刷新csf客户端缓存">场景三：不重启服务刷新csf客户端缓存</h4>
+<p>由于csf客户端有缓存机制，新注册的csf服务在不重启客户端的前提下无法获取，调用报错”客户端获取服务基本信息为空“，希望不通过重启csf客户端来解决</p>
+<p>解决过程：通过阅读源码，发现客户端的csf服务缓存存放在com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog类的serviceInfoCache属性中，ServicesCatalog类中的initOnce()方法可以刷新该缓存</p>
+<p>寻找ServicesCatalog的classloader</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>通过<code>vmtool</code>查找内存中所有的ServicesCatalog实例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>发现有多个ServicesCatalog实例，猜测每个centerCode都对应一个ServicesCatalog</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226165342772.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231226165342772"
+	
+	
+></p>
+<p>向下解析实例的属性，尝试定位到我们需要的实例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog -x <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>可以看到实例的一个字段记录了中心编码，可以通过该字段确定我们需要用的实例</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226170322826.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231226170322826"
+	
+	
+></p>
+<p>由于该类的属性较多，不是很方便查看，但ognl表达式并不支持循环遍历，所以我们尝试使用角标单独打印每个实例的centerCode以确定我们需要的实例</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[0].centerCode&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[1].centerCode&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[2].centerCode&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>终于，定位到了我们需要的实例</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226170740767.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image-20231226170740767"
+	
+	
+></p>
+<p>下面开始调用ServicesCatalog实例的initOnce()方法可以刷新该实例的缓存</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[6].initOnce()&#39;</span> -x <span class="m">3</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再次调用csf接口，发现此时已经可以正常的调到csf服务端了</p>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/arthas/">arthas</a>
+        
+            <a href="/tags/java/">java</a>
+        
+    </section>
+
+
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">相关文章</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/p/hugo/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Hugo</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "hugo-theme-stack" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (typeof DISQUS == 'object') {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2020 - 
+        
+        2023 Hugo Theme Stack Starter
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        主题 <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.21.0">Stack</a></b> 由 <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a> 设计
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
