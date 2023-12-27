@@ -310,7 +310,6 @@
           <ol>
             <li><a href="#场景一手动触发bean的方法">场景一：手动触发bean的方法</a></li>
             <li><a href="#场景二修改private属性">场景二：修改private属性</a></li>
-            <li><a href="#场景三不重启服务刷新csf客户端缓存">场景三：不重启服务刷新csf客户端缓存</a></li>
           </ol>
         </li>
       </ol>
@@ -1844,96 +1843,6 @@
 <p>Arthas默认设置不允许修改字段，需要通过运行<code>options strict false</code>命令来修改这一配置</p>
 </blockquote>
 <p>再次调用接口，发现返回已经变为了刚才修改的JCNL</p>
-<h4 id="场景三不重启服务刷新csf客户端缓存">场景三：不重启服务刷新csf客户端缓存</h4>
-<p>由于csf客户端有缓存机制，新注册的csf服务在不重启客户端的前提下无法获取，调用报错”客户端获取服务基本信息为空“，希望不通过重启csf客户端来解决</p>
-<p>解决过程：通过阅读源码，发现客户端的csf服务缓存存放在com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog类的serviceInfoCache属性中，ServicesCatalog类中的initOnce()方法可以刷新该缓存</p>
-<p>寻找ServicesCatalog的classloader</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>通过<code>vmtool</code>查找内存中所有的ServicesCatalog实例</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>发现有多个ServicesCatalog实例，猜测每个centerCode都对应一个ServicesCatalog</p>
-<p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226165342772.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="image-20231226165342772"
-	
-	
-></p>
-<p>向下解析实例的属性，尝试定位到我们需要的实例</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog -x <span class="m">3</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>可以看到实例的一个字段记录了中心编码，可以通过该字段确定我们需要用的实例</p>
-<p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226170322826.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="image-20231226170322826"
-	
-	
-></p>
-<p>由于该类的属性较多，不是很方便查看，但ognl表达式并不支持循环遍历，所以我们尝试使用角标单独打印每个实例的centerCode以确定我们需要的实例</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[0].centerCode&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[1].centerCode&#39;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[2].centerCode&#39;</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>终于，定位到了我们需要的实例</p>
-<p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226170740767.png"
-	
-	
-	
-	loading="lazy"
-	
-		alt="image-20231226170740767"
-	
-	
-></p>
-<p>下面开始调用ServicesCatalog实例的initOnce()方法可以刷新该实例的缓存</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className com.ai.aif.csf.servicerouter.catelog.centers.center.services.ServicesCatalog --express <span class="s1">&#39;instances[6].initOnce()&#39;</span> -x <span class="m">3</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>再次调用csf接口，发现此时已经可以正常的调到csf服务端了</p>
 
 </section>
 
