@@ -2,7 +2,7 @@
 title: "Arthas"
 date: 2023-12-27T11:18:03Z
 #约等于副标题 description: Welcome to Hugo Theme Stack
-description: "来源于 : rapdog"
+description: "作者 : rapdog"
 #封面图片image: 
 # 内容特色图像featured_image:
 categories:
