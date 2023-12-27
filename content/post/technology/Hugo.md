@@ -7,7 +7,7 @@ date: 2023-12-18T13:05:43Z
 categories:
   - Tecnology
 tags:
-  - unkonwn
+  - hugo
 author: Diandoricon
 # 权重
 weight: 0 
@@ -16,11 +16,17 @@ toc: true
 draft: false
 ---
 
-## 二级目录
+## write for me
 
-- 12
+### create
 
-- 123
-- 123
-- 456
-Start writing your Hugo here.
+1. 默认模版
+``` hugo new content/post/arthas.md ```
+
+2. technology
+
+```
+  hugo new -k tb  content/post/arthas.md
+```
+### config
+- https://gohugo.io/content-management/front-matter/

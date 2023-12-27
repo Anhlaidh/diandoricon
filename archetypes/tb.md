@@ -13,12 +13,12 @@ author: Diandoricon
 weight: 0 
 #  是否开启右侧目录
 toc: true
-menu:
-  main:
-    parent: "parent-menu-item"
-    identifier: "custom-identifier"
-    name: "Menu Name"
-draft: false
+# menu:
+#   main:
+#     parent: "parent-menu-item"
+#     identifier: "custom-identifier"
+#     name: "Menu Name"
+# draft: false
 ---
 
 Start writing your {{ replace .Name "-" " " | title }} here.
