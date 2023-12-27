@@ -10,9 +10,10 @@
 <meta property='og:description' content='作者 : rapdog'>
 <meta property='og:url' content='https://diandoricon.cloud/p/arthas/'>
 <meta property='og:site_name' content='Hugo Theme Stack Starter'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='arthas' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2023-12-27T11:18:03&#43;00:00'/><meta property='article:modified_time' content='2023-12-27T11:18:03&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='arthas' /><meta property='article:tag' content='java' /><meta property='article:published_time' content='2023-12-27T11:18:03&#43;00:00'/><meta property='article:modified_time' content='2023-12-27T11:18:03&#43;00:00'/><meta property='og:image' content='https://arthas.gitee.io/images/arthas.png' />
 <meta name="twitter:title" content="Arthas">
-<meta name="twitter:description" content="作者 : rapdog">
+<meta name="twitter:description" content="作者 : rapdog"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://arthas.gitee.io/images/arthas.png' />
     <link rel="shortcut icon" href="/favicon.png" />
 
     </head>
@@ -325,8 +326,16 @@
 
 
             <main class="main full-width">
-    <article class="main-article">
+    <article class="has-image main-article">
     <header class="article-header">
+        <div class="article-image">
+            <a href="/p/arthas/">
+                
+                    <img src="https://arthas.gitee.io/images/arthas.png" loading="lazy" alt="Featured image of post Arthas" />
+                
+            </a>
+        </div>
+    
 
     <div class="article-details">
     
@@ -397,9 +406,7 @@
     <section class="article-content">
     
     
-    <h1 id="arthas使用说明">Arthas使用说明</h1>
-<p>[TOC]</p>
-<h2 id="一简介">一、简介</h2>
+    <h2 id="一简介">一、简介</h2>
 <h3 id="arthas项目地址">Arthas项目地址</h3>
 <p><a class="link" href="https://github.com/alibaba/arthas"  target="_blank" rel="noopener"
     >GitHub</a></p>
@@ -434,13 +441,11 @@
 	
 	
 ></p>
-<p>Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用
-load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。</p>
+<p>Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。</p>
 <h2 id="背景">背景</h2>
 <p>通常，本地开发环境无法访问生产环境。如果在生产环境中遇到问题，则无法使用 IDE 远程调试。更糟糕的是，在生产环境中调试是不可接受的，因为它会暂停所有线程，导致服务暂停。</p>
 <p>开发人员可以尝试在测试环境或者预发环境中复现生产环境中的问题。但是，某些问题无法在不同的环境中轻松复现，甚至在重新启动后就消失了。</p>
-<p>如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦
-JVM 重新启动，它可能无法复现，如上文所述。</p>
+<p>如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦 JVM 重新启动，它可能无法复现，如上文所述。</p>
 <p>Arthas 旨在解决这些问题。开发人员可以在线解决生产问题。无需 JVM 重启，无需代码更改。 Arthas 作为观察者永远不会暂停正在运行的线程。</p>
 <h2 id="arthas阿尔萨斯能为你做什么">Arthas（阿尔萨斯）能为你做什么？</h2>
 <p><code>Arthas</code> 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。</p>
@@ -825,13 +830,13 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>通过接口调用arthasTest方法后，监控到调用情况：</p>
-<p><img src="/image-20231207174601845.png"
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/07/image-20231207174601845.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231207174601845.png"
+		alt="image-20231207174601845"
 	
 	
 ></p>
@@ -910,25 +915,25 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ watch com.ai.controller.TesttController arthasTest <span class="s2">&#34;{params, returnObj}&#34;</span> -x <span class="m">3</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>调用该方法的入参&amp;返回值
-<img src="/image-20231207181317519.png"
+</div><p>调用该方法的入参&amp;返回值</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/07/image-20231207181317519.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231207181317519.png"
+		alt="image-20231207181317519"
 	
 	
 ></p>
-<p>观察到方法执行的结果：
-<img src="/image-20231207181300533.png"
+<p>观察到方法执行的结果：</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/07/image-20231207181300533.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231207181300533.png"
+		alt="image-20231207181300533"
 	
 	
 ></p>
@@ -980,9 +985,9 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 </span><span class="lnt">3
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">timeConsumingMethod</span><span class="p">()</span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">1000</span><span class="p">);</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">private</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">timeConsumingMethod</span><span class="p">()</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">InterruptedException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="n">1000</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
 </span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>追踪<code>arthasTest</code>方法</p>
@@ -994,14 +999,14 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ trace com.ai.controller.TesttController arthasTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>调用<code>arthasTest</code>方法，查看trace输出结果：
-<img src="/image-20231212182512995.png"
+</div><p>调用<code>arthasTest</code>方法，查看trace输出结果：</p>
+<p><img src="http://www.rapdog.cn:7777/images/2023/12/12/image-20231212182512995.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231212182512995.png"
+		alt="image-20231212182512995"
 	
 	
 ></p>
@@ -1055,13 +1060,13 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ stack com.ai.controller.TesttController timeConsumingMethod
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231214152854689.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/14/image-20231214152854689.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231214152854689.png"
+		alt="image-20231214152854689"
 	
 	
 ></p>
@@ -1070,9 +1075,7 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <blockquote>
 <p>time-tunnel 方法执行数据的时空隧道，</p>
 <p>记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</p>
-<p>watch
-虽然很方便和灵活，但需要提前想清楚观察表达式的拼写，这对排查问题而言要求太高，因为很多时候我们并不清楚问题出自于何方，只能靠蛛丝马迹进行猜测。这个时候如果能记录下当时方法调用的所有入参和返回值、抛出的异常会对整个问题的思考与判断非常有帮助。于是乎，TimeTunnel
-命令就诞生了。</p>
+<p>watch 虽然很方便和灵活，但需要提前想清楚观察表达式的拼写，这对排查问题而言要求太高，因为很多时候我们并不清楚问题出自于何方，只能靠蛛丝马迹进行猜测。这个时候如果能记录下当时方法调用的所有入参和返回值、抛出的异常会对整个问题的思考与判断非常有帮助。于是乎，TimeTunnel 命令就诞生了。</p>
 <p>作用：记录指定方法每次调用的入参和返回值，并后期还可以对这些信息进行观测</p>
 </blockquote>
 <h5 id="字段说明-1">字段说明</h5>
@@ -1163,17 +1166,17 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -t com.ai.controller.TesttController arthasTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231214165348778.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/14/image-20231214165348778.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231214165348778.png"
+		alt="image-20231214165348778"
 	
 	
->
-查看index为1000的调用详情</p>
+></p>
+<p>查看index为1000的调用详情</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1182,13 +1185,13 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225113523019.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225113523019.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225113523019.png"
+		alt="image-20231225113523019"
 	
 	
 ></p>
@@ -1201,13 +1204,13 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span> -p
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225113714705.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225113714705.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225113714705.png"
+		alt="image-20231225113714705"
 	
 	
 ></p>
@@ -1293,13 +1296,13 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dashboard -i <span class="m">10000</span> -n <span class="m">3</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225150258683.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225150258683.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225150258683.png"
+		alt="image-20231225150258683"
 	
 	
 ></p>
@@ -1343,19 +1346,17 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@java.lang.System@out.println(&#34;hello&#34;)&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-</ul>
-<p><img src="/image-20231225153829398.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225153829398.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225153829398.png"
+		alt="image-20231225153829398"
 	
 	
 ></p>
-<ul>
+</li>
 <li>
 <p>查看静态属性</p>
 <div class="highlight"><div class="chroma">
@@ -1366,19 +1367,17 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@com.ai.controller.TesttController@IP_UNKNOWN&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-</ul>
-<p><img src="/image-20231225165011696.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225165011696.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225165011696.png"
+		alt="image-20231225165011696"
 	
 	
 ></p>
-<ul>
+</li>
 <li>
 <p>获取某类的Logger，并使用该Logger打印日志</p>
 <div class="highlight"><div class="chroma">
@@ -1389,19 +1388,17 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#logger=@com.ai.controller.TesttController@logger,#logger.info(&#34;hello world!!&#34;)&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-</ul>
-<p><img src="/image-20231225162947492.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225162947492.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225162947492.png"
+		alt="image-20231225162947492"
 	
 	
 ></p>
-<ul>
+</li>
 <li>
 <p>利用hutool的spring工具类获取spring bean, 构建一个map作为入参并调用bean的方法</p>
 <div class="highlight"><div class="chroma">
@@ -1622,13 +1619,13 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225183736692.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225183736692.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225183736692.png"
+		alt="image-20231225183736692"
 	
 	
 ></p>
@@ -1641,13 +1638,13 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d -f cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225183830888.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/25/image-20231225183830888.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231225183830888.png"
+		alt="image-20231225183830888"
 	
 	
 ></p>
@@ -1661,17 +1658,17 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sm cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231226110513326.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226110513326.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231226110513326.png"
+		alt="image-20231226110513326"
 	
 	
->
-查看方法详细信息</p>
+></p>
+<p>查看方法详细信息</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1696,19 +1693,17 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances --className java.lang.String --limit <span class="m">10</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-</ul>
-<p><img src="/image-20231226112546961.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226112546961.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231226112546961.png"
+		alt="image-20231226112546961"
 	
 	
 ></p>
-<ul>
+</li>
 <li>
 <p>指定classloader获取对象</p>
 <p>利用<code>sc</code>命令获取类的classloader hash</p>
@@ -1720,19 +1715,17 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d org.spriogframework.context.ApplicationContext
 </span></span></code></pre></td></tr></table>
 </div>
-</div></li>
-</ul>
-<p><img src="/image-20231226155439769.png"
+</div><p><img src="http://www.rapdog.cn:7777/images/2023/12/26/image-20231226155439769.png"
 	
 	
 	
 	loading="lazy"
 	
-		alt="image-20231226155439769.png"
+		alt="image-20231226155439769"
 	
 	
->
-再指定classloader</p>
+></p>
+<p>再指定classloader</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1741,7 +1734,7 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances -c 18b4aac2 --className org.springframework.context.ApplicationContext
 </span></span></code></pre></td></tr></table>
 </div>
-</div><ul>
+</div></li>
 <li>
 <p>执行表达式</p>
 <blockquote>
@@ -1816,9 +1809,9 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TesttController</span><span class="w"> </span><span class="p">{</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Value</span><span class="p">(</span><span class="s">&#34;${log4x.audit.opLog.sysCode}&#34;</span><span class="p">)</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SYSCODE</span><span class="p">;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nd">@Value</span><span class="p">(</span><span class="s">&#34;${log4x.audit.opLog.sysCode}&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">SYSCODE</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@PostMapping</span><span class="p">(</span><span class="s">&#34;/arthasTest&#34;</span><span class="p">)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">arthasTest</span><span class="p">(</span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Object</span><span class="o">&gt;</span><span class="w"> </span><span class="n">req</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">SYSCODE</span><span class="p">;</span><span class="w">
@@ -1855,9 +1848,7 @@ JVM 重新启动，它可能无法复现，如上文所述。</p>
 </span></span></code></pre></td></tr></table>
 </div>
 </div><blockquote>
-<p>报错：&ldquo;Error during processing the command: java.lang.IllegalAccessError, message:By default, strict mode is true, not allowed to set
-object properties. Want to set object properties, execute <code>options strict false</code>, please check $HOME/logs/arthas/arthas.log for more
-details.&rdquo;</p>
+<p>报错：&ldquo;Error during processing the command: java.lang.IllegalAccessError, message:By default, strict mode is true, not allowed to set object properties. Want to set object properties, execute <code>options strict false</code>, please check $HOME/logs/arthas/arthas.log for more details.&rdquo;</p>
 <p>Arthas默认设置不允许修改字段，需要通过运行<code>options strict false</code>命令来修改这一配置</p>
 </blockquote>
 <p>再次调用接口，发现返回已经变为了刚才修改的JCNL</p>

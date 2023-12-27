@@ -30,9 +30,7 @@
         <pubDate>Wed, 27 Dec 2023 11:18:03 +0000</pubDate>
         
         <guid>https://diandoricon.cloud/p/arthas/</guid>
-        <description>&lt;h1 id=&#34;arthas使用说明&#34;&gt;Arthas使用说明&lt;/h1&gt;
-&lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h2 id=&#34;一简介&#34;&gt;一、简介&lt;/h2&gt;
+        <description>&lt;img src="https://arthas.gitee.io/images/arthas.png" alt="Featured image of post Arthas" /&gt;&lt;h2 id=&#34;一简介&#34;&gt;一、简介&lt;/h2&gt;
 &lt;h3 id=&#34;arthas项目地址&#34;&gt;Arthas项目地址&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alibaba/arthas&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;GitHub&lt;/a&gt;&lt;/p&gt;
@@ -67,13 +65,11 @@
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用
-load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。&lt;/p&gt;
+&lt;p&gt;Arthas 是一款线上监控诊断产品，通过全局视角实时查看应用 load、内存、gc、线程的状态信息，并能在不修改应用代码的情况下，对业务问题进行诊断，包括查看方法调用的出入参、异常，监测方法执行耗时，类加载信息等，大大提升线上问题排查效率。&lt;/p&gt;
 &lt;h2 id=&#34;背景&#34;&gt;背景&lt;/h2&gt;
 &lt;p&gt;通常，本地开发环境无法访问生产环境。如果在生产环境中遇到问题，则无法使用 IDE 远程调试。更糟糕的是，在生产环境中调试是不可接受的，因为它会暂停所有线程，导致服务暂停。&lt;/p&gt;
 &lt;p&gt;开发人员可以尝试在测试环境或者预发环境中复现生产环境中的问题。但是，某些问题无法在不同的环境中轻松复现，甚至在重新启动后就消失了。&lt;/p&gt;
-&lt;p&gt;如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦
-JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
+&lt;p&gt;如果您正在考虑在代码中添加一些日志以帮助解决问题，您将必须经历以下阶段：测试、预发，然后生产。这种方法效率低下，更糟糕的是，该问题可能无法解决，因为一旦 JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;p&gt;Arthas 旨在解决这些问题。开发人员可以在线解决生产问题。无需 JVM 重启，无需代码更改。 Arthas 作为观察者永远不会暂停正在运行的线程。&lt;/p&gt;
 &lt;h2 id=&#34;arthas阿尔萨斯能为你做什么&#34;&gt;Arthas（阿尔萨斯）能为你做什么？&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;Arthas&lt;/code&gt; 是 Alibaba 开源的 Java 诊断工具，深受开发者喜爱。&lt;/p&gt;
@@ -458,13 +454,13 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;通过接口调用arthasTest方法后，监控到调用情况：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231207174601845.png&#34;
+&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/07/image-20231207174601845.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231207174601845.png&#34;
+		alt=&#34;image-20231207174601845&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -543,25 +539,25 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ watch com.ai.controller.TesttController arthasTest &lt;span class=&#34;s2&#34;&gt;&amp;#34;{params, returnObj}&amp;#34;&lt;/span&gt; -x &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;调用该方法的入参&amp;amp;返回值
-&lt;img src=&#34;https://diandoricon.cloud/image-20231207181317519.png&#34;
+&lt;/div&gt;&lt;p&gt;调用该方法的入参&amp;amp;返回值&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/07/image-20231207181317519.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231207181317519.png&#34;
+		alt=&#34;image-20231207181317519&#34;
 	
 	
 &gt;&lt;/p&gt;
-&lt;p&gt;观察到方法执行的结果：
-&lt;img src=&#34;https://diandoricon.cloud/image-20231207181300533.png&#34;
+&lt;p&gt;观察到方法执行的结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/07/image-20231207181300533.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231207181300533.png&#34;
+		alt=&#34;image-20231207181300533&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -613,9 +609,9 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;/span&gt;&lt;span class=&#34;lnt&#34;&gt;3
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
-&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;timeConsumingMethod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;throws&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;InterruptedException&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;timeConsumingMethod&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;throws&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;InterruptedException&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Thread&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;sleep&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;追踪&lt;code&gt;arthasTest&lt;/code&gt;方法&lt;/p&gt;
@@ -627,14 +623,14 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ trace com.ai.controller.TesttController arthasTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;调用&lt;code&gt;arthasTest&lt;/code&gt;方法，查看trace输出结果：
-&lt;img src=&#34;https://diandoricon.cloud/image-20231212182512995.png&#34;
+&lt;/div&gt;&lt;p&gt;调用&lt;code&gt;arthasTest&lt;/code&gt;方法，查看trace输出结果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/12/image-20231212182512995.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231212182512995.png&#34;
+		alt=&#34;image-20231212182512995&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -688,13 +684,13 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ stack com.ai.controller.TesttController timeConsumingMethod
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231214152854689.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/14/image-20231214152854689.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231214152854689.png&#34;
+		alt=&#34;image-20231214152854689&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -703,9 +699,7 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;time-tunnel 方法执行数据的时空隧道，&lt;/p&gt;
 &lt;p&gt;记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测&lt;/p&gt;
-&lt;p&gt;watch
-虽然很方便和灵活，但需要提前想清楚观察表达式的拼写，这对排查问题而言要求太高，因为很多时候我们并不清楚问题出自于何方，只能靠蛛丝马迹进行猜测。这个时候如果能记录下当时方法调用的所有入参和返回值、抛出的异常会对整个问题的思考与判断非常有帮助。于是乎，TimeTunnel
-命令就诞生了。&lt;/p&gt;
+&lt;p&gt;watch 虽然很方便和灵活，但需要提前想清楚观察表达式的拼写，这对排查问题而言要求太高，因为很多时候我们并不清楚问题出自于何方，只能靠蛛丝马迹进行猜测。这个时候如果能记录下当时方法调用的所有入参和返回值、抛出的异常会对整个问题的思考与判断非常有帮助。于是乎，TimeTunnel 命令就诞生了。&lt;/p&gt;
 &lt;p&gt;作用：记录指定方法每次调用的入参和返回值，并后期还可以对这些信息进行观测&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h5 id=&#34;字段说明-1&#34;&gt;字段说明&lt;/h5&gt;
@@ -796,17 +790,17 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -t com.ai.controller.TesttController arthasTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231214165348778.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/14/image-20231214165348778.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231214165348778.png&#34;
+		alt=&#34;image-20231214165348778&#34;
 	
 	
-&gt;
-查看index为1000的调用详情&lt;/p&gt;
+&gt;&lt;/p&gt;
+&lt;p&gt;查看index为1000的调用详情&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -815,13 +809,13 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -i &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225113523019.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225113523019.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225113523019.png&#34;
+		alt=&#34;image-20231225113523019&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -834,13 +828,13 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -i &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; -p
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225113714705.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225113714705.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225113714705.png&#34;
+		alt=&#34;image-20231225113714705&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -926,13 +920,13 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ dashboard -i &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt; -n &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225150258683.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225150258683.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225150258683.png&#34;
+		alt=&#34;image-20231225150258683&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -976,19 +970,17 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;@java.lang.System@out.println(&amp;#34;hello&amp;#34;)&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225153829398.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225153829398.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225153829398.png&#34;
+		alt=&#34;image-20231225153829398&#34;
 	
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;查看静态属性&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -999,19 +991,17 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;@com.ai.controller.TesttController@IP_UNKNOWN&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225165011696.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225165011696.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225165011696.png&#34;
+		alt=&#34;image-20231225165011696&#34;
 	
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;获取某类的Logger，并使用该Logger打印日志&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1022,19 +1012,17 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;#logger=@com.ai.controller.TesttController@logger,#logger.info(&amp;#34;hello world!!&amp;#34;)&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225162947492.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225162947492.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225162947492.png&#34;
+		alt=&#34;image-20231225162947492&#34;
 	
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;利用hutool的spring工具类获取spring bean, 构建一个map作为入参并调用bean的方法&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -1255,13 +1243,13 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225183736692.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225183736692.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225183736692.png&#34;
+		alt=&#34;image-20231225183736692&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1274,13 +1262,13 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d -f cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225183830888.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/25/image-20231225183830888.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231225183830888.png&#34;
+		alt=&#34;image-20231225183830888&#34;
 	
 	
 &gt;&lt;/p&gt;
@@ -1294,17 +1282,17 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sm cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226110513326.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/26/image-20231226110513326.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231226110513326.png&#34;
+		alt=&#34;image-20231226110513326&#34;
 	
 	
-&gt;
-查看方法详细信息&lt;/p&gt;
+&gt;&lt;/p&gt;
+&lt;p&gt;查看方法详细信息&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1329,19 +1317,17 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ vmtool --action getInstances --className java.lang.String --limit &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226112546961.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/26/image-20231226112546961.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231226112546961.png&#34;
+		alt=&#34;image-20231226112546961&#34;
 	
 	
 &gt;&lt;/p&gt;
-&lt;ul&gt;
+&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;指定classloader获取对象&lt;/p&gt;
 &lt;p&gt;利用&lt;code&gt;sc&lt;/code&gt;命令获取类的classloader hash&lt;/p&gt;
@@ -1353,19 +1339,17 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d org.spriogframework.context.ApplicationContext
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226155439769.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;http://www.rapdog.cn:7777/images/2023/12/26/image-20231226155439769.png&#34;
 	
 	
 	
 	loading=&#34;lazy&#34;
 	
-		alt=&#34;image-20231226155439769.png&#34;
+		alt=&#34;image-20231226155439769&#34;
 	
 	
-&gt;
-再指定classloader&lt;/p&gt;
+&gt;&lt;/p&gt;
+&lt;p&gt;再指定classloader&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code&gt;&lt;span class=&#34;lnt&#34;&gt;1
@@ -1374,7 +1358,7 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ vmtool --action getInstances -c 18b4aac2 --className org.springframework.context.ApplicationContext
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;ul&gt;
+&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;执行表达式&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1449,9 +1433,9 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
 &lt;td class=&#34;lntd&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;TesttController&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${log4x.audit.opLog.sysCode}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SYSCODE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@Value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;${log4x.audit.opLog.sysCode}&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;	&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;private&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SYSCODE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@PostMapping&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;/arthasTest&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;public&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;arthasTest&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nd&#34;&gt;@RequestBody&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Map&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;String&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;req&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;w&#34;&gt;        &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;n&#34;&gt;SYSCODE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
@@ -1488,9 +1472,7 @@ JVM 重新启动，它可能无法复现，如上文所述。&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;blockquote&gt;
-&lt;p&gt;报错：&amp;ldquo;Error during processing the command: java.lang.IllegalAccessError, message:By default, strict mode is true, not allowed to set
-object properties. Want to set object properties, execute &lt;code&gt;options strict false&lt;/code&gt;, please check $HOME/logs/arthas/arthas.log for more
-details.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;报错：&amp;ldquo;Error during processing the command: java.lang.IllegalAccessError, message:By default, strict mode is true, not allowed to set object properties. Want to set object properties, execute &lt;code&gt;options strict false&lt;/code&gt;, please check $HOME/logs/arthas/arthas.log for more details.&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;Arthas默认设置不允许修改字段，需要通过运行&lt;code&gt;options strict false&lt;/code&gt;命令来修改这一配置&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;再次调用接口，发现返回已经变为了刚才修改的JCNL&lt;/p&gt;
