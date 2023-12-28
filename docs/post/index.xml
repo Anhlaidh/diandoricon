@@ -454,14 +454,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;通过接口调用arthasTest方法后，监控到调用情况：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231207174601845.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231207174601845.png&#34;
+	width=&#34;1452&#34;
+	height=&#34;277&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231207174601845_hu4b6244dcd80ccf55717a0ec4ae462ac8_35546_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231207174601845_hu4b6244dcd80ccf55717a0ec4ae462ac8_35546_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231207174601845&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;524&#34;
+		data-flex-basis=&#34;1258px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;2watch观察方法调用情况&#34;&gt;2.&lt;code&gt;watch&lt;/code&gt;：观察方法调用情况&lt;/h4&gt;
@@ -540,25 +544,33 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;调用该方法的入参&amp;amp;返回值&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231207181317519.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231207181317519.png&#34;
+	width=&#34;1614&#34;
+	height=&#34;495&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231207181317519_huc7e1824502ee59facb4189d46cf3fa59_47488_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231207181317519_huc7e1824502ee59facb4189d46cf3fa59_47488_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231207181317519&#34;
 	
 	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;326&#34;
+		data-flex-basis=&#34;782px&#34;
+	
 &gt;&lt;/p&gt;
 &lt;p&gt;观察到方法执行的结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231207181300533.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231207181300533.png&#34;
+	width=&#34;1169&#34;
+	height=&#34;342&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231207181300533_huc7c9c528a6de341212923c04efe7ebdb_33820_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231207181300533_huc7c9c528a6de341212923c04efe7ebdb_33820_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231207181300533&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;341&#34;
+		data-flex-basis=&#34;820px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;3trace根据路径追踪并记录消耗时间&#34;&gt;3.&lt;code&gt;trace&lt;/code&gt;：根据路径追踪，并记录消耗时间&lt;/h4&gt;
@@ -624,14 +636,18 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;调用&lt;code&gt;arthasTest&lt;/code&gt;方法，查看trace输出结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231212182512995.png&#34;
-	
-	
-	
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231212182512995.png&#34;
+	width=&#34;1470&#34;
+	height=&#34;266&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231212182512995_hu93ebe3314167ff3d4c25315f4aaf3bcf_50371_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231212182512995_hu93ebe3314167ff3d4c25315f4aaf3bcf_50371_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231212182512995&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;552&#34;
+		data-flex-basis=&#34;1326px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;可以看到方法的内部调用路径以及耗时都清晰的展示出来&lt;/p&gt;
@@ -684,14 +700,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ stack com.ai.controller.TesttController timeConsumingMethod
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231214152854689.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231214152854689.png&#34;
+	width=&#34;1462&#34;
+	height=&#34;536&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231214152854689_hu840a3d2cde397e9d4c9a4b8a94cf9e95_110621_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231214152854689_hu840a3d2cde397e9d4c9a4b8a94cf9e95_110621_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231214152854689&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;272&#34;
+		data-flex-basis=&#34;654px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;可以看到该方法的调用栈被打印出来&lt;/p&gt;
@@ -790,14 +810,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -t com.ai.controller.TesttController arthasTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231214165348778.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231214165348778.png&#34;
+	width=&#34;1379&#34;
+	height=&#34;456&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231214165348778_hub96e3c3f11aca679f9192edaf2c85e0e_64086_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231214165348778_hub96e3c3f11aca679f9192edaf2c85e0e_64086_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;Image 1&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;302&#34;
+		data-flex-basis=&#34;725px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;查看index为1000的调用详情&lt;/p&gt;
@@ -809,14 +833,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -i &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225113523019.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225113523019.png&#34;
+	width=&#34;1564&#34;
+	height=&#34;386&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225113523019_hu9a6533cff94b5173de83fafe3c57784d_39143_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225113523019_hu9a6533cff94b5173de83fafe3c57784d_39143_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225113523019&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;405&#34;
+		data-flex-basis=&#34;972px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;复现index为1000的调用，使用当时的入参再次调用方法&lt;/p&gt;
@@ -828,14 +856,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -i &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; -p
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225113714705.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225113714705.png&#34;
+	width=&#34;1450&#34;
+	height=&#34;392&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225113714705_hu933df622041ed77ebf8caa3c7d5f78e4_39685_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225113714705_hu933df622041ed77ebf8caa3c7d5f78e4_39685_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225113714705&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;369&#34;
+		data-flex-basis=&#34;887px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;6dashboard当前系统的实时数据面板&#34;&gt;6.&lt;code&gt;dashboard&lt;/code&gt;：当前系统的实时数据面板&lt;/h4&gt;
@@ -920,14 +952,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ dashboard -i &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt; -n &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225150258683.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225150258683.png&#34;
+	width=&#34;2039&#34;
+	height=&#34;704&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225150258683_hue12e91bdaef8c9125e62342e2bcf7404_133821_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225150258683_hue12e91bdaef8c9125e62342e2bcf7404_133821_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225150258683&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;289&#34;
+		data-flex-basis=&#34;695px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;7ognl执行ognl表达式&#34;&gt;7.&lt;code&gt;ognl&lt;/code&gt;：执行ognl表达式&lt;/h4&gt;
@@ -970,14 +1006,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;@java.lang.System@out.println(&amp;#34;hello&amp;#34;)&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225153829398.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225153829398.png&#34;
+	width=&#34;1095&#34;
+	height=&#34;272&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225153829398_hua5fc6b244b770f5d59d82ac256b5506b_90557_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225153829398_hua5fc6b244b770f5d59d82ac256b5506b_90557_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225153829398&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;402&#34;
+		data-flex-basis=&#34;966px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -991,14 +1031,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;@com.ai.controller.TesttController@IP_UNKNOWN&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225165011696.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225165011696.png&#34;
+	width=&#34;1576&#34;
+	height=&#34;192&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225165011696_hu0ea9298414072a261580fbe7fb4af7ab_29997_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225165011696_hu0ea9298414072a261580fbe7fb4af7ab_29997_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225165011696&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;820&#34;
+		data-flex-basis=&#34;1970px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -1012,14 +1056,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;#logger=@com.ai.controller.TesttController@logger,#logger.info(&amp;#34;hello world!!&amp;#34;)&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225162947492.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225162947492.png&#34;
+	width=&#34;1977&#34;
+	height=&#34;205&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225162947492_hua757d00f49c8606ce401d2d3b90fd3e6_86766_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225162947492_hua757d00f49c8606ce401d2d3b90fd3e6_86766_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225162947492&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;964&#34;
+		data-flex-basis=&#34;2314px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -1243,14 +1291,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225183736692.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225183736692.png&#34;
+	width=&#34;1426&#34;
+	height=&#34;621&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225183736692_hu5028a261551e957aa22f9ae4623324d0_72279_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225183736692_hu5028a261551e957aa22f9ae4623324d0_72279_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225183736692&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;229&#34;
+		data-flex-basis=&#34;551px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;查看某类的详细信息&amp;amp;成员变量信息&lt;/p&gt;
@@ -1262,14 +1314,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d -f cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225183830888.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231225183830888.png&#34;
+	width=&#34;1515&#34;
+	height=&#34;627&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231225183830888_hu411dfcdd7897caf156134b87e872151f_67022_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231225183830888_hu411dfcdd7897caf156134b87e872151f_67022_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231225183830888&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;241&#34;
+		data-flex-basis=&#34;579px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;h4 id=&#34;9sm查看已加载类的方法信息&#34;&gt;9.&lt;code&gt;sm&lt;/code&gt;：查看已加载类的方法信息&lt;/h4&gt;
@@ -1282,14 +1338,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sm cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226110513326.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231226110513326.png&#34;
+	width=&#34;1296&#34;
+	height=&#34;125&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231226110513326_hu911e50e9c13a015dfd6d4e2eced3df6d_20223_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231226110513326_hu911e50e9c13a015dfd6d4e2eced3df6d_20223_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231226110513326&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;1036&#34;
+		data-flex-basis=&#34;2488px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;查看方法详细信息&lt;/p&gt;
@@ -1317,14 +1377,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ vmtool --action getInstances --className java.lang.String --limit &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226112546961.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231226112546961.png&#34;
+	width=&#34;1465&#34;
+	height=&#34;320&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231226112546961_hu292ca4ab833e93626d7109852a63a2fe_40319_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231226112546961_hu292ca4ab833e93626d7109852a63a2fe_40319_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231226112546961&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;457&#34;
+		data-flex-basis=&#34;1098px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;/li&gt;
@@ -1339,14 +1403,18 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d org.spriogframework.context.ApplicationContext
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226155439769.png&#34;
-	
-	
-	
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/p/arthas/image-20231226155439769.png&#34;
+	width=&#34;1449&#34;
+	height=&#34;567&#34;
+	srcset=&#34;https://diandoricon.cloud/p/arthas/image-20231226155439769_hu38f11a068d6a111f21305ce66b524350_86875_480x0_resize_box_3.png 480w, https://diandoricon.cloud/p/arthas/image-20231226155439769_hu38f11a068d6a111f21305ce66b524350_86875_1024x0_resize_box_3.png 1024w&#34;
 	loading=&#34;lazy&#34;
 	
 		alt=&#34;image 20231226155439769&#34;
 	
+	
+		class=&#34;gallery-image&#34; 
+		data-flex-grow=&#34;255&#34;
+		data-flex-basis=&#34;613px&#34;
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;再指定classloader&lt;/p&gt;

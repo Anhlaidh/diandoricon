@@ -830,14 +830,18 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>通过接口调用arthasTest方法后，监控到调用情况：</p>
-<p><img src="/image-20231207174601845.png"
-	
-	
-	
+<p><img src="/p/arthas/image-20231207174601845.png"
+	width="1452"
+	height="277"
+	srcset="/p/arthas/image-20231207174601845_hu4b6244dcd80ccf55717a0ec4ae462ac8_35546_480x0_resize_box_3.png 480w, /p/arthas/image-20231207174601845_hu4b6244dcd80ccf55717a0ec4ae462ac8_35546_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231207174601845"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="524"
+		data-flex-basis="1258px"
 	
 ></p>
 <h4 id="2watch观察方法调用情况">2.<code>watch</code>：观察方法调用情况</h4>
@@ -916,25 +920,33 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>调用该方法的入参&amp;返回值</p>
-<p><img src="/image-20231207181317519.png"
-	
-	
-	
+<p><img src="/p/arthas/image-20231207181317519.png"
+	width="1614"
+	height="495"
+	srcset="/p/arthas/image-20231207181317519_huc7e1824502ee59facb4189d46cf3fa59_47488_480x0_resize_box_3.png 480w, /p/arthas/image-20231207181317519_huc7e1824502ee59facb4189d46cf3fa59_47488_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231207181317519"
 	
 	
+		class="gallery-image" 
+		data-flex-grow="326"
+		data-flex-basis="782px"
+	
 ></p>
 <p>观察到方法执行的结果：</p>
-<p><img src="/image-20231207181300533.png"
-	
-	
-	
+<p><img src="/p/arthas/image-20231207181300533.png"
+	width="1169"
+	height="342"
+	srcset="/p/arthas/image-20231207181300533_huc7c9c528a6de341212923c04efe7ebdb_33820_480x0_resize_box_3.png 480w, /p/arthas/image-20231207181300533_huc7c9c528a6de341212923c04efe7ebdb_33820_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231207181300533"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="341"
+		data-flex-basis="820px"
 	
 ></p>
 <h4 id="3trace根据路径追踪并记录消耗时间">3.<code>trace</code>：根据路径追踪，并记录消耗时间</h4>
@@ -1000,14 +1012,18 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>调用<code>arthasTest</code>方法，查看trace输出结果：</p>
-<p><img src="/image-20231212182512995.png"
-	
-	
-	
+<p><img src="/p/arthas/image-20231212182512995.png"
+	width="1470"
+	height="266"
+	srcset="/p/arthas/image-20231212182512995_hu93ebe3314167ff3d4c25315f4aaf3bcf_50371_480x0_resize_box_3.png 480w, /p/arthas/image-20231212182512995_hu93ebe3314167ff3d4c25315f4aaf3bcf_50371_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231212182512995"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="552"
+		data-flex-basis="1326px"
 	
 ></p>
 <p>可以看到方法的内部调用路径以及耗时都清晰的展示出来</p>
@@ -1060,14 +1076,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ stack com.ai.controller.TesttController timeConsumingMethod
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231214152854689.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231214152854689.png"
+	width="1462"
+	height="536"
+	srcset="/p/arthas/image-20231214152854689_hu840a3d2cde397e9d4c9a4b8a94cf9e95_110621_480x0_resize_box_3.png 480w, /p/arthas/image-20231214152854689_hu840a3d2cde397e9d4c9a4b8a94cf9e95_110621_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231214152854689"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="272"
+		data-flex-basis="654px"
 	
 ></p>
 <p>可以看到该方法的调用栈被打印出来</p>
@@ -1166,14 +1186,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -t com.ai.controller.TesttController arthasTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231214165348778.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231214165348778.png"
+	width="1379"
+	height="456"
+	srcset="/p/arthas/image-20231214165348778_hub96e3c3f11aca679f9192edaf2c85e0e_64086_480x0_resize_box_3.png 480w, /p/arthas/image-20231214165348778_hub96e3c3f11aca679f9192edaf2c85e0e_64086_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="Image 1"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="302"
+		data-flex-basis="725px"
 	
 ></p>
 <p>查看index为1000的调用详情</p>
@@ -1185,14 +1209,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225113523019.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225113523019.png"
+	width="1564"
+	height="386"
+	srcset="/p/arthas/image-20231225113523019_hu9a6533cff94b5173de83fafe3c57784d_39143_480x0_resize_box_3.png 480w, /p/arthas/image-20231225113523019_hu9a6533cff94b5173de83fafe3c57784d_39143_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225113523019"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="405"
+		data-flex-basis="972px"
 	
 ></p>
 <p>复现index为1000的调用，使用当时的入参再次调用方法</p>
@@ -1204,14 +1232,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span> -p
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225113714705.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225113714705.png"
+	width="1450"
+	height="392"
+	srcset="/p/arthas/image-20231225113714705_hu933df622041ed77ebf8caa3c7d5f78e4_39685_480x0_resize_box_3.png 480w, /p/arthas/image-20231225113714705_hu933df622041ed77ebf8caa3c7d5f78e4_39685_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225113714705"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="369"
+		data-flex-basis="887px"
 	
 ></p>
 <h4 id="6dashboard当前系统的实时数据面板">6.<code>dashboard</code>：当前系统的实时数据面板</h4>
@@ -1296,14 +1328,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dashboard -i <span class="m">10000</span> -n <span class="m">3</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225150258683.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225150258683.png"
+	width="2039"
+	height="704"
+	srcset="/p/arthas/image-20231225150258683_hue12e91bdaef8c9125e62342e2bcf7404_133821_480x0_resize_box_3.png 480w, /p/arthas/image-20231225150258683_hue12e91bdaef8c9125e62342e2bcf7404_133821_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225150258683"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="289"
+		data-flex-basis="695px"
 	
 ></p>
 <h4 id="7ognl执行ognl表达式">7.<code>ognl</code>：执行ognl表达式</h4>
@@ -1346,14 +1382,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@java.lang.System@out.println(&#34;hello&#34;)&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225153829398.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225153829398.png"
+	width="1095"
+	height="272"
+	srcset="/p/arthas/image-20231225153829398_hua5fc6b244b770f5d59d82ac256b5506b_90557_480x0_resize_box_3.png 480w, /p/arthas/image-20231225153829398_hua5fc6b244b770f5d59d82ac256b5506b_90557_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225153829398"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="402"
+		data-flex-basis="966px"
 	
 ></p>
 </li>
@@ -1367,14 +1407,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@com.ai.controller.TesttController@IP_UNKNOWN&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225165011696.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225165011696.png"
+	width="1576"
+	height="192"
+	srcset="/p/arthas/image-20231225165011696_hu0ea9298414072a261580fbe7fb4af7ab_29997_480x0_resize_box_3.png 480w, /p/arthas/image-20231225165011696_hu0ea9298414072a261580fbe7fb4af7ab_29997_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225165011696"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="820"
+		data-flex-basis="1970px"
 	
 ></p>
 </li>
@@ -1388,14 +1432,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#logger=@com.ai.controller.TesttController@logger,#logger.info(&#34;hello world!!&#34;)&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225162947492.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225162947492.png"
+	width="1977"
+	height="205"
+	srcset="/p/arthas/image-20231225162947492_hua757d00f49c8606ce401d2d3b90fd3e6_86766_480x0_resize_box_3.png 480w, /p/arthas/image-20231225162947492_hua757d00f49c8606ce401d2d3b90fd3e6_86766_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225162947492"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="964"
+		data-flex-basis="2314px"
 	
 ></p>
 </li>
@@ -1619,14 +1667,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225183736692.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225183736692.png"
+	width="1426"
+	height="621"
+	srcset="/p/arthas/image-20231225183736692_hu5028a261551e957aa22f9ae4623324d0_72279_480x0_resize_box_3.png 480w, /p/arthas/image-20231225183736692_hu5028a261551e957aa22f9ae4623324d0_72279_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225183736692"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="229"
+		data-flex-basis="551px"
 	
 ></p>
 <p>查看某类的详细信息&amp;成员变量信息</p>
@@ -1638,14 +1690,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d -f cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225183830888.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231225183830888.png"
+	width="1515"
+	height="627"
+	srcset="/p/arthas/image-20231225183830888_hu411dfcdd7897caf156134b87e872151f_67022_480x0_resize_box_3.png 480w, /p/arthas/image-20231225183830888_hu411dfcdd7897caf156134b87e872151f_67022_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231225183830888"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="241"
+		data-flex-basis="579px"
 	
 ></p>
 <h4 id="9sm查看已加载类的方法信息">9.<code>sm</code>：查看已加载类的方法信息</h4>
@@ -1658,14 +1714,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sm cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231226110513326.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231226110513326.png"
+	width="1296"
+	height="125"
+	srcset="/p/arthas/image-20231226110513326_hu911e50e9c13a015dfd6d4e2eced3df6d_20223_480x0_resize_box_3.png 480w, /p/arthas/image-20231226110513326_hu911e50e9c13a015dfd6d4e2eced3df6d_20223_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231226110513326"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="1036"
+		data-flex-basis="2488px"
 	
 ></p>
 <p>查看方法详细信息</p>
@@ -1693,14 +1753,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances --className java.lang.String --limit <span class="m">10</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231226112546961.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231226112546961.png"
+	width="1465"
+	height="320"
+	srcset="/p/arthas/image-20231226112546961_hu292ca4ab833e93626d7109852a63a2fe_40319_480x0_resize_box_3.png 480w, /p/arthas/image-20231226112546961_hu292ca4ab833e93626d7109852a63a2fe_40319_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231226112546961"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="457"
+		data-flex-basis="1098px"
 	
 ></p>
 </li>
@@ -1715,14 +1779,18 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d org.spriogframework.context.ApplicationContext
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231226155439769.png"
-	
-	
-	
+</div><p><img src="/p/arthas/image-20231226155439769.png"
+	width="1449"
+	height="567"
+	srcset="/p/arthas/image-20231226155439769_hu38f11a068d6a111f21305ce66b524350_86875_480x0_resize_box_3.png 480w, /p/arthas/image-20231226155439769_hu38f11a068d6a111f21305ce66b524350_86875_1024x0_resize_box_3.png 1024w"
 	loading="lazy"
 	
 		alt="image 20231226155439769"
 	
+	
+		class="gallery-image" 
+		data-flex-grow="255"
+		data-flex-basis="613px"
 	
 ></p>
 <p>再指定classloader</p>
