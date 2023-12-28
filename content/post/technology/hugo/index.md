@@ -28,5 +28,7 @@ draft: false
 ```
   hugo new -k tb  content/post/arthas.md
 ```
+
+3. 文档目录下要是index.md !!!
 ### config
 - https://gohugo.io/content-management/front-matter/
