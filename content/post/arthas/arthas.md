@@ -425,7 +425,7 @@ $ stack com.ai.controller.TesttController timeConsumingMethod
 $ tt -t com.ai.controller.TesttController arthasTest
 ```
 
-![image 20231214165348778](image-20231214165348778.png)
+![Image 1](image-20231214165348778.png)
 
 查看index为1000的调用详情
 
