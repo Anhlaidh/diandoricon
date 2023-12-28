@@ -2,7 +2,7 @@
 baseurl = "https://diandoricon.cloud/"
 languageCode = "zh-cn"
 paginate = 5
-title = "Hugo Theme Stack Starter"
+title = "真的猛士，敢于直面惨淡的人生，敢于正视淋漓的鲜血。"
 publishDir = "docs"
 # Theme i18n support
 # Available values: en, fr, id, ja, ko, pt-br, zh-cn, zh-tw, es, de, nl, it, th, el, uk, ar
@@ -13,4 +13,4 @@ defaultContentLanguage = "zh-cn"
 hasCJKLanguage = false
 
 # Change it to your Disqus shortname before using
-disqusShortname = "hugo-theme-stack"
+disqusShortname = "电动浴缸"
