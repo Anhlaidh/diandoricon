@@ -454,7 +454,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;通过接口调用arthasTest方法后，监控到调用情况：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231207174601845.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231207174601845.png&#34;
 	
 	
 	
@@ -540,7 +540,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;调用该方法的入参&amp;amp;返回值&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231207181317519.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231207181317519.png&#34;
 	
 	
 	
@@ -551,7 +551,7 @@
 	
 &gt;&lt;/p&gt;
 &lt;p&gt;观察到方法执行的结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231207181300533.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231207181300533.png&#34;
 	
 	
 	
@@ -624,7 +624,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;调用&lt;code&gt;arthasTest&lt;/code&gt;方法，查看trace输出结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231212182512995.png&#34;
+&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231212182512995.png&#34;
 	
 	
 	
@@ -684,7 +684,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ stack com.ai.controller.TesttController timeConsumingMethod
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231214152854689.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231214152854689.png&#34;
 	
 	
 	
@@ -790,7 +790,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -t com.ai.controller.TesttController arthasTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231214165348778.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231214165348778.png&#34;
 	
 	
 	
@@ -809,7 +809,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -i &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225113523019.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225113523019.png&#34;
 	
 	
 	
@@ -828,7 +828,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ tt -i &lt;span class=&#34;m&#34;&gt;1000&lt;/span&gt; -p
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225113714705.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225113714705.png&#34;
 	
 	
 	
@@ -920,7 +920,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ dashboard -i &lt;span class=&#34;m&#34;&gt;10000&lt;/span&gt; -n &lt;span class=&#34;m&#34;&gt;3&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225150258683.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225150258683.png&#34;
 	
 	
 	
@@ -970,7 +970,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;@java.lang.System@out.println(&amp;#34;hello&amp;#34;)&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225153829398.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225153829398.png&#34;
 	
 	
 	
@@ -991,7 +991,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;@com.ai.controller.TesttController@IP_UNKNOWN&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225165011696.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225165011696.png&#34;
 	
 	
 	
@@ -1012,7 +1012,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ ognl &lt;span class=&#34;s1&#34;&gt;&amp;#39;#logger=@com.ai.controller.TesttController@logger,#logger.info(&amp;#34;hello world!!&amp;#34;)&amp;#39;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225162947492.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225162947492.png&#34;
 	
 	
 	
@@ -1243,7 +1243,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225183736692.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225183736692.png&#34;
 	
 	
 	
@@ -1262,7 +1262,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d -f cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231225183830888.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231225183830888.png&#34;
 	
 	
 	
@@ -1282,7 +1282,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sm cn.rapdog.OgnlTest
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226110513326.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231226110513326.png&#34;
 	
 	
 	
@@ -1317,7 +1317,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ vmtool --action getInstances --className java.lang.String --limit &lt;span class=&#34;m&#34;&gt;10&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226112546961.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231226112546961.png&#34;
 	
 	
 	
@@ -1339,7 +1339,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;$ sc -d org.spriogframework.context.ApplicationContext
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/image-20231226155439769.png&#34;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://diandoricon.cloud/assets/image-20231226155439769.png&#34;
 	
 	
 	

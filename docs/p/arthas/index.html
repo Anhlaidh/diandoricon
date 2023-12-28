@@ -830,7 +830,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>通过接口调用arthasTest方法后，监控到调用情况：</p>
-<p><img src="/image-20231207174601845.png"
+<p><img src="/assets/image-20231207174601845.png"
 	
 	
 	
@@ -916,7 +916,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>调用该方法的入参&amp;返回值</p>
-<p><img src="/image-20231207181317519.png"
+<p><img src="/assets/image-20231207181317519.png"
 	
 	
 	
@@ -927,7 +927,7 @@
 	
 ></p>
 <p>观察到方法执行的结果：</p>
-<p><img src="/image-20231207181300533.png"
+<p><img src="/assets/image-20231207181300533.png"
 	
 	
 	
@@ -1000,7 +1000,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>调用<code>arthasTest</code>方法，查看trace输出结果：</p>
-<p><img src="/image-20231212182512995.png"
+<p><img src="/assets/image-20231212182512995.png"
 	
 	
 	
@@ -1060,7 +1060,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ stack com.ai.controller.TesttController timeConsumingMethod
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231214152854689.png"
+</div><p><img src="/assets/image-20231214152854689.png"
 	
 	
 	
@@ -1166,7 +1166,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -t com.ai.controller.TesttController arthasTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231214165348778.png"
+</div><p><img src="/assets/image-20231214165348778.png"
 	
 	
 	
@@ -1185,7 +1185,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225113523019.png"
+</div><p><img src="/assets/image-20231225113523019.png"
 	
 	
 	
@@ -1204,7 +1204,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ tt -i <span class="m">1000</span> -p
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225113714705.png"
+</div><p><img src="/assets/image-20231225113714705.png"
 	
 	
 	
@@ -1296,7 +1296,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ dashboard -i <span class="m">10000</span> -n <span class="m">3</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225150258683.png"
+</div><p><img src="/assets/image-20231225150258683.png"
 	
 	
 	
@@ -1346,7 +1346,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@java.lang.System@out.println(&#34;hello&#34;)&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225153829398.png"
+</div><p><img src="/assets/image-20231225153829398.png"
 	
 	
 	
@@ -1367,7 +1367,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;@com.ai.controller.TesttController@IP_UNKNOWN&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225165011696.png"
+</div><p><img src="/assets/image-20231225165011696.png"
 	
 	
 	
@@ -1388,7 +1388,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ ognl <span class="s1">&#39;#logger=@com.ai.controller.TesttController@logger,#logger.info(&#34;hello world!!&#34;)&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225162947492.png"
+</div><p><img src="/assets/image-20231225162947492.png"
 	
 	
 	
@@ -1619,7 +1619,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225183736692.png"
+</div><p><img src="/assets/image-20231225183736692.png"
 	
 	
 	
@@ -1638,7 +1638,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d -f cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231225183830888.png"
+</div><p><img src="/assets/image-20231225183830888.png"
 	
 	
 	
@@ -1658,7 +1658,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sm cn.rapdog.OgnlTest
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231226110513326.png"
+</div><p><img src="/assets/image-20231226110513326.png"
 	
 	
 	
@@ -1693,7 +1693,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ vmtool --action getInstances --className java.lang.String --limit <span class="m">10</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231226112546961.png"
+</div><p><img src="/assets/image-20231226112546961.png"
 	
 	
 	
@@ -1715,7 +1715,7 @@
 <pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">$ sc -d org.spriogframework.context.ApplicationContext
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p><img src="/image-20231226155439769.png"
+</div><p><img src="/assets/image-20231226155439769.png"
 	
 	
 	

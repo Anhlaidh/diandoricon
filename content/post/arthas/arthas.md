@@ -267,7 +267,7 @@ $ monitor com.ai.controller.TesttController arthasTest -c 5
 
 通过接口调用arthasTest方法后，监控到调用情况：
 
-![image-20231207174601845](image-20231207174601845.png)
+![image-20231207174601845](./assets/image-20231207174601845.png)
 
 
 
@@ -309,11 +309,11 @@ $ watch com.ai.controller.TesttController arthasTest "{params, returnObj}" -x 3
 
 调用该方法的入参&返回值
 
-![image-20231207181317519](image-20231207181317519.png)
+![image-20231207181317519](./assets/image-20231207181317519.png)
 
 观察到方法执行的结果：
 
-![image-20231207181300533](image-20231207181300533.png)
+![image-20231207181300533](./assets/image-20231207181300533.png)
 
 
 
@@ -350,7 +350,7 @@ $ trace com.ai.controller.TesttController arthasTest
 
 调用`arthasTest`方法，查看trace输出结果：
 
-![image-20231212182512995](image-20231212182512995.png)
+![image-20231212182512995](./assets/image-20231212182512995.png)
 
 可以看到方法的内部调用路径以及耗时都清晰的展示出来
 
@@ -379,7 +379,7 @@ $ trace com.ai.controller.TesttController arthasTest
 $ stack com.ai.controller.TesttController timeConsumingMethod
 ```
 
-![image-20231214152854689](image-20231214152854689.png)
+![image-20231214152854689](./assets/image-20231214152854689.png)
 
 可以看到该方法的调用栈被打印出来
 
@@ -425,7 +425,7 @@ $ stack com.ai.controller.TesttController timeConsumingMethod
 $ tt -t com.ai.controller.TesttController arthasTest
 ```
 
-![image-20231214165348778](image-20231214165348778.png)
+![image-20231214165348778](./assets/image-20231214165348778.png)
 
 查看index为1000的调用详情
 
@@ -433,7 +433,7 @@ $ tt -t com.ai.controller.TesttController arthasTest
 $ tt -i 1000
 ```
 
-![image-20231225113523019](image-20231225113523019.png)
+![image-20231225113523019](./assets/image-20231225113523019.png)
 
 复现index为1000的调用，使用当时的入参再次调用方法
 
@@ -441,7 +441,7 @@ $ tt -i 1000
 $ tt -i 1000 -p
 ```
 
-![image-20231225113714705](image-20231225113714705.png)
+![image-20231225113714705](./assets/image-20231225113714705.png)
 
 #### 6.`dashboard`：当前系统的实时数据面板
 
@@ -477,7 +477,7 @@ $ tt -i 1000 -p
 $ dashboard -i 10000 -n 3
 ```
 
-![image-20231225150258683](image-20231225150258683.png)
+![image-20231225150258683](./assets/image-20231225150258683.png)
 
 #### 7.`ognl`：执行ognl表达式
 
@@ -498,7 +498,7 @@ $ dashboard -i 10000 -n 3
   $ ognl '@java.lang.System@out.println("hello")'
   ```
 
-  ![image-20231225153829398](image-20231225153829398.png)
+  ![image-20231225153829398](./assets/image-20231225153829398.png)
 
 - 查看静态属性
 
@@ -506,7 +506,7 @@ $ dashboard -i 10000 -n 3
   $ ognl '@com.ai.controller.TesttController@IP_UNKNOWN'
   ```
 
-  ![image-20231225165011696](image-20231225165011696.png)
+  ![image-20231225165011696](./assets/image-20231225165011696.png)
 
 - 获取某类的Logger，并使用该Logger打印日志
 
@@ -514,7 +514,7 @@ $ dashboard -i 10000 -n 3
   $ ognl '#logger=@com.ai.controller.TesttController@logger,#logger.info("hello world!!")'
   ```
 
-  ![image-20231225162947492](image-20231225162947492.png)
+  ![image-20231225162947492](./assets/image-20231225162947492.png)
 
 - 利用hutool的spring工具类获取spring bean, 构建一个map作为入参并调用bean的方法
 
@@ -638,7 +638,7 @@ $ dashboard -i 10000 -n 3
 $ sc -d cn.rapdog.OgnlTest
 ```
 
-![image-20231225183736692](image-20231225183736692.png)
+![image-20231225183736692](./assets/image-20231225183736692.png)
 
 查看某类的详细信息&成员变量信息
 
@@ -646,7 +646,7 @@ $ sc -d cn.rapdog.OgnlTest
 $ sc -d -f cn.rapdog.OgnlTest
 ```
 
-![image-20231225183830888](image-20231225183830888.png)
+![image-20231225183830888](./assets/image-20231225183830888.png)
 
 #### 9.`sm`：查看已加载类的方法信息
 
@@ -656,7 +656,7 @@ $ sc -d -f cn.rapdog.OgnlTest
 $ sm cn.rapdog.OgnlTest
 ```
 
-![image-20231226110513326](image-20231226110513326.png)
+![image-20231226110513326](./assets/image-20231226110513326.png)
 
 查看方法详细信息
 
@@ -675,7 +675,7 @@ $ -d sm cn.rapdog.OgnlTest
   $ vmtool --action getInstances --className java.lang.String --limit 10
   ```
 
-  ![image-20231226112546961](image-20231226112546961.png)
+  ![image-20231226112546961](./assets/image-20231226112546961.png)
 
 - 指定classloader获取对象
 
@@ -685,7 +685,7 @@ $ -d sm cn.rapdog.OgnlTest
   $ sc -d org.spriogframework.context.ApplicationContext
   ```
 
-  ![image-20231226155439769](image-20231226155439769.png)
+  ![image-20231226155439769](./assets/image-20231226155439769.png)
 
   再指定classloader
 
